@@ -46,14 +46,27 @@ class ControllerCommonSeoPro extends Controller {
 			}
 		}
 
-
+		if ($code == $this->config_language && 
+					isset($this->request->cookie['language']) &&
+						$this->request->cookie['language'] != $code &&
+							isset($this->request->server['HTTP_X_REQUESTED_WITH']) && 
+								strtolower($this->request->server['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+				$code = $this->request->cookie['language'];
+		}
+		
 		if(!isset($this->session->data['language']) || $this->session->data['language'] != $code) {
 			$this->session->data['language'] = $code;
 		}
 
-		if(!isset($this->request->cookie['language']) || $this->request->cookie['language'] != $code) {
-			setcookie('language', $code, time() + 60 * 60 * 24 * 30, '/', $this->request->server['HTTP_HOST']);
-		}
+	
+        $xhttprequested = isset($this->request->server['HTTP_X_REQUESTED_WITH']) && $this->request->server['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest';
+
+        $captcha = isset($this->request->get['route']) && $this->request->get['route']=='product/product/captcha';
+
+        if(!$xhttprequested && !$captcha) {
+            setcookie('language', $code, time() + 60 * 60 * 24 * 30, '/', $this->request->server['HTTP_HOST']);
+        }
+
 
 		$this->config->set('config_language_id', $this->languages[$code]['language_id']);
 		$this->config->set('config_language', $this->languages[$code]['code']);
