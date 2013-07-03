@@ -2,7 +2,7 @@
 
 <http://opencartforum.ru/topic/10270-dubli-stranitc-seopro/>
 
-Для того, чтобы избавиться от дублей на страницы товаров, пользователь [Yesvik](http://opencartforum.ru/user/6876-yesvik/) написал SeoPro (он включён в поставке ocStore).
+Для того, чтобы избавиться от дублей на страницы товаров, пользователь [Yesvik](http://opencartforum.ru/user/6876-yesvik/) написал SeoPro (он включён в поставку ocStore).
 
 Этот мод -- дополнение к его замечательному решению. Позволяет две вещи:
 
