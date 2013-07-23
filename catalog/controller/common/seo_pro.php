@@ -34,6 +34,9 @@ class ControllerCommonSeoPro extends Controller {
 		$code = $this->config_language;
 
 		if(isset($this->request->get['_route_'])) {
+
+			$route_ = $this->request->get['_route_'];
+
 			$tokens = explode('/', $this->request->get['_route_']);
 
 			if(array_key_exists($tokens[0], $this->languages)) {
@@ -133,14 +136,15 @@ class ControllerCommonSeoPro extends Controller {
 			} elseif (isset($this->request->get['path'])) {
 				$this->request->get['route'] = 'product/category';
 			} elseif (isset($this->request->get['manufacturer_id'])) {
-
-                $this->request->get['route'] = 'product/manufacturer/product';
-
-                if(in_array(substr(VERSION, 0, 5), array('1.5.4', '1.5.5'))) { 
-				    $this->request->get['route'] = 'product/manufacturer/info';
-                }
+				$this->request->get['route'] = 'product/manufacturer/product';
+				if(in_array(substr(VERSION, 0, 5), array('1.5.4', '1.5.5'))) { 
+					$this->request->get['route'] = 'product/manufacturer/info';
+				}
 			} elseif (isset($this->request->get['information_id'])) {
 				$this->request->get['route'] = 'information/information';
+			} elseif(isset($this->cache_data['queries'][$route_])) {
+					header($this->request->server['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
+					$this->response->redirect($this->cache_data['queries'][$route_]);
 			} else {
 				if (isset($queries[$parts[0]])) {
 					$this->request->get['route'] = $queries[$parts[0]];
