@@ -374,7 +374,9 @@ class ControllerCommonSeoPro extends Controller {
 			$url = str_replace('&amp;', '&', $this->config->get('config_ssl') . ltrim($this->request->server['REQUEST_URI'], '/'));
 			$seo = str_replace('&amp;', '&', $this->url->link($this->request->get['route'], $this->getQueryString(array('route')), 'SSL'));
 		} else {
-			$url = str_replace('&amp;', '&', $this->config->get('config_url') . ltrim($this->request->server['REQUEST_URI'], '/'));
+			$url = str_replace('&amp;', '&',
+				substr($this->config->get('config_url'), 0, strpos($this->config->get('config_url'), '/', 10)) // leave only domain
+				. $this->request->server['REQUEST_URI']);
 			$seo = str_replace('&amp;', '&', $this->url->link($this->request->get['route'], $this->getQueryString(array('route')), 'NONSSL'));
 		}
 
@@ -391,7 +393,11 @@ class ControllerCommonSeoPro extends Controller {
 			$exclude = array();
 			}
 
-		return urldecode(http_build_query(array_diff_key($this->request->get, array_flip($exclude))));
+		return urldecode(
+			http_build_query(
+				array_diff_key($this->request->get, array_flip($exclude))
+				)
+			);
 		}
 	}
 ?>
