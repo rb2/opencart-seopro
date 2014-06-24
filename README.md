@@ -4,7 +4,7 @@ Tested on Opencart v1.5.6.4 (oc1564).
 Should work on all oc15x versions.
 
 This repository contains all modified files, so you can compare them with yours.
-You can use Total Commander (Windows), WinMerge (Windows), Meld (Linus) to compare
+You can use Total Commander (Windows), WinMerge (Windows), Meld (Linux) to compare
 files and folders.
 
 
@@ -19,7 +19,7 @@ files and folders.
 * compare and make changes to all other files.
 
     GUI tools that can help you compare files and directories:
-    Total Commander (Windows), WinMerge (Windows), Meld (Linus).
+    Total Commander (Windows), WinMerge (Windows), Meld (Linux).
 
 * Open file `index.php`, find and replace this line
 
@@ -132,7 +132,7 @@ files and folders.
 
 	return;
 
-это вырубит валидацию... а при переносе на хостинг добаленную строку - удалить.
+это отключит валидацию... а при переносе на хостинг добавленную строку - удалить.
 
 При этом не будет формироваться полная структура ссылки (`/category/subcategory/product`
 при включенной соответсвующей опции) и работать переадресация (`store/product_name`
