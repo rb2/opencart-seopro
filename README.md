@@ -1,8 +1,42 @@
+# Seo Pro: INSTALLATION
+
+Tested on Opencart v1.5.6.4 (oc1564).
+Should work on all oc15x versions.
+
+This repository contains all modified files, so you can compare them with yours.
+You can use Total Commander (Windows), WinMerge (Windows), Meld (Linus) to compare
+files and folders.
+
+
+* execute SQL query
+
+        ALTER TABLE `product_to_category` ADD `main_category` tinyint(1) NOT NULL DEFAULT '0';
+
+    if you use prefix, add it to the table name.
+
+* copy file `seo_pro.php` into the folder `catalog/controller/common`
+
+* compare and make changes to all other files.
+
+    GUI tools that can help you compare files and directories:
+    Total Commander (Windows), WinMerge (Windows), Meld (Linus).
+
+* Open file `index.php`, find and replace this line
+
+        $controller->addPreAction(new Action('common/seo_url'));
+
+    with following
+
+        if (!$seo_type = $config->get('config_seo_url_type')) {
+            $seo_type = 'seo_url';
+        }
+        $controller->addPreAction(new Action('common/' . $seo_type));
+
 # Дубли страниц, SeoPro
 
 <http://opencartforum.ru/topic/10270-dubli-stranitc-seopro/>
 
-Для того, чтобы избавиться от дублей на страницы товаров, пользователь
+Для того, чтобы избавиться от дублей на страницы товаров,
 [Yesvik](http://opencartforum.ru/user/6876-yesvik/) написал SeoPro (он
 включён в поставку ocStore).
 
@@ -107,24 +141,4 @@
 
 Причина: именно по итогам валидации принимается решение о редиректе.
 
-
-# Seo Pro: INSTALLATION
-
-* execute SQL query
-
-        ALTER TABLE `product_to_category` ADD `main_category` tinyint(1) NOT NULL DEFAULT '0';
-
-    if you use prefix, add it to the table name.
-
-* copy file `seo_pro.php` into the folder `catalog/controller/common`
-
-* Open file `index.php`, find and replace this line
-
-        $controller->addPreAction(new Action('common/seo_url'));
-
-    with following
-
-        if (!$seo_type = $config->get('config_seo_url_type')) {
-            $seo_type = 'seo_url';
-        }
-        $controller->addPreAction(new Action('common/' . $seo_type));
+**UPD (rb2):** по-моему, в этом репозитории эта ошибка уже исправлена.
