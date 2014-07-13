@@ -32,6 +32,25 @@ files and folders.
         }
         $controller->addPreAction(new Action('common/' . $seo_type));
 
+# Authors
+
+Author: [Yesvik](http://opencartforum.ru/user/6876-yesvik/), 2011
+
+## Contributors
+
+*   [freelancer](https://opencartforum.com/user/12381-freelancer/)
+    (Ruslan Shvarev), <https://github.com/pavlickm/seopro>
+
+*   [cmd](https://opencartforum.com/user/20535-cmd/)
+    (Евгений)
+
+*   [rb / rb2](https://opencartforum.com/user/10112-rb2/)
+    (Ruslan Brest), <http://rb.labtodo.com>
+
+    <https://github.com/rb2/opencart-seopro>
+    Contains full set of changed files (no vQmod; compare files and make changes)
+
+
 # Дубли страниц, SeoPro
 
 <http://opencartforum.ru/topic/10270-dubli-stranitc-seopro/>
@@ -41,7 +60,7 @@ files and folders.
 включён в поставку ocStore).
 
 
-## cached\_seo\_pro
+## cached_seo_pro
 
 Этот мод -- дополнение к его замечательному решению. Позволяет две вещи:
 
@@ -141,4 +160,35 @@ files and folders.
 
 Причина: именно по итогам валидации принимается решение о редиректе.
 
-**UPD (rb2):** по-моему, в этом репозитории эта ошибка уже исправлена.
+**UPD (rb2):** по-моему, в моём репозитории эта ошибка была исправлена.
+
+
+# Contributions
+
+````sh
+git shortlog -ne --no-merges | sed 's/\:$/\n/' >> CONTRIBUTORS.md
+````
+
+Shvarev Ruslan <shvarev.ruslan@otr.ru> (7):
+
+      first commit
+      add files
+      trailing slash fix
+      fix 1.5.4+ manufacturer seo page
+      seo_pro multilang cookie set
+      multilang cross-browser fix
+      add support any query redirect
+
+Евгений <commanddotcom@yandex.ru> (1):
+
+      Update seo_pro.php
+
+Ruslan Brest <rb@labtodo.com> (7):
+
+      Add more info to README
+      README: fix typo
+      README: перенёс описания с форума в репо, как в более логичное место.
+      [+] add SeoPro / tested on oc1564
+      UPD repo description
+      fix typo in README
+      [!] fixed #2: при выборе категории на странице поиска переходит в категорию, а не ищет товары
