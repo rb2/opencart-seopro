@@ -62,13 +62,13 @@ class ControllerCommonSeoPro extends Controller {
 		}
 
 	
-        $xhttprequested = isset($this->request->server['HTTP_X_REQUESTED_WITH']) && $this->request->server['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest';
+		$xhttprequested = isset($this->request->server['HTTP_X_REQUESTED_WITH']) && $this->request->server['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest';
 
-        $captcha = isset($this->request->get['route']) && $this->request->get['route']=='product/product/captcha';
+		$captcha = isset($this->request->get['route']) && $this->request->get['route']=='product/product/captcha';
 
-        if(!$xhttprequested && !$captcha) {
-            setcookie('language', $code, time() + 60 * 60 * 24 * 30, '/', $this->request->server['HTTP_HOST']);
-        }
+		if(!$xhttprequested && !$captcha) {
+			setcookie('language', $code, time() + 60 * 60 * 24 * 30, '/', $this->request->server['HTTP_HOST']);
+		}
 
 
 		$this->config->set('config_language_id', $this->languages[$code]['language_id']);
@@ -233,6 +233,11 @@ class ControllerCommonSeoPro extends Controller {
 				case 'manufacturer_id':
 				case 'category_id':
 				case 'information_id':
+
+				case 'search':
+				case 'sub_category':
+				case 'description':
+
 					$queries[] = $key . '=' . $value;
 					unset($data[$key]);
 					$postfix = 1;
@@ -292,9 +297,9 @@ class ControllerCommonSeoPro extends Controller {
 			$seo_url .= '/';
 		}
 
-        if(substr($seo_url, -2) == '//') {
-            $seo_url = substr($seo_url, 0, -1);
-        }
+		if(substr($seo_url, -2) == '//') {
+			$seo_url = substr($seo_url, 0, -1);
+		}
 
 
 		if (count($data)) {
