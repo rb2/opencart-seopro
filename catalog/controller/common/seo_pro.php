@@ -49,19 +49,19 @@ class ControllerCommonSeoPro extends Controller {
 			}
 		}
 
-		if ($code == $this->config_language && 
+		if ($code == $this->config_language &&
 					isset($this->request->cookie['language']) &&
 						$this->request->cookie['language'] != $code &&
-							isset($this->request->server['HTTP_X_REQUESTED_WITH']) && 
+							isset($this->request->server['HTTP_X_REQUESTED_WITH']) &&
 								strtolower($this->request->server['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 				$code = $this->request->cookie['language'];
 		}
-		
+
 		if(!isset($this->session->data['language']) || $this->session->data['language'] != $code) {
 			$this->session->data['language'] = $code;
 		}
 
-	
+
 		$xhttprequested = isset($this->request->server['HTTP_X_REQUESTED_WITH']) && $this->request->server['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest';
 
 		$captcha = isset($this->request->get['route']) && $this->request->get['route']=='product/product/captcha';
@@ -137,7 +137,7 @@ class ControllerCommonSeoPro extends Controller {
 				$this->request->get['route'] = 'product/category';
 			} elseif (isset($this->request->get['manufacturer_id'])) {
 				$this->request->get['route'] = 'product/manufacturer/product';
-				if(in_array(substr(VERSION, 0, 5), array('1.5.4', '1.5.5'))) { 
+				if(in_array(substr(VERSION, 0, 5), array('1.5.4', '1.5.5'))) {
 					$this->request->get['route'] = 'product/manufacturer/info';
 				}
 			} elseif (isset($this->request->get['information_id'])) {
@@ -405,4 +405,3 @@ class ControllerCommonSeoPro extends Controller {
 			);
 		}
 	}
-?>

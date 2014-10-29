@@ -1,4 +1,4 @@
-<?php  
+<?php
 class ControllerModuleLanguage extends Controller {
 	protected function index() {
     	if (isset($this->request->post['language_code'])) {
@@ -70,8 +70,7 @@ class ControllerModuleLanguage extends Controller {
 		} else {
 			$this->template = 'default/template/module/language.tpl';
 		}
-		
+
 		$this->render();
 	}
 }
-?>
