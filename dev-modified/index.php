@@ -1,9 +1,9 @@
 <?php
 // Version
-define('VERSION', '1.5.6.4');
+define('VERSION', '2.0.1.1');
 
 // Configuration
-if (file_exists('config.php')) {
+if (is_file('config.php')) {
 	require_once('config.php');
 }
 
@@ -15,15 +15,6 @@ if (!defined('DIR_APPLICATION')) {
 
 // Startup
 require_once(DIR_SYSTEM . 'startup.php');
-
-// Application Classes
-require_once(DIR_SYSTEM . 'library/customer.php');
-require_once(DIR_SYSTEM . 'library/affiliate.php');
-require_once(DIR_SYSTEM . 'library/currency.php');
-require_once(DIR_SYSTEM . 'library/tax.php');
-require_once(DIR_SYSTEM . 'library/weight.php');
-require_once(DIR_SYSTEM . 'library/length.php');
-require_once(DIR_SYSTEM . 'library/cart.php');
 
 // Registry
 $registry = new Registry();
@@ -54,13 +45,13 @@ if ($store_query->num_rows) {
 }
 
 // Settings
-$query = $db->query("SELECT * FROM " . DB_PREFIX . "setting WHERE store_id = '0' OR store_id = '" . (int)$config->get('config_store_id') . "' ORDER BY store_id ASC");
+$query = $db->query("SELECT * FROM `" . DB_PREFIX . "setting` WHERE store_id = '0' OR store_id = '" . (int)$config->get('config_store_id') . "' ORDER BY store_id ASC");
 
-foreach ($query->rows as $setting) {
-	if (!$setting['serialized']) {
-		$config->set($setting['key'], $setting['value']);
+foreach ($query->rows as $result) {
+	if (!$result['serialized']) {
+		$config->set($result['key'], $result['value']);
 	} else {
-		$config->set($setting['key'], unserialize($setting['value']));
+		$config->set($result['key'], unserialize($result['value']));
 	}
 }
 
@@ -79,6 +70,11 @@ $registry->set('log', $log);
 
 function error_handler($errno, $errstr, $errfile, $errline) {
 	global $log, $config;
+
+	// error suppressed with @
+	if (error_reporting() === 0) {
+		return false;
+	}
 
 	switch ($errno) {
 		case E_NOTICE:
@@ -123,7 +119,7 @@ $response->setCompression($config->get('config_compression'));
 $registry->set('response', $response);
 
 // Cache
-$cache = new Cache();
+$cache = new Cache('file');
 $registry->set('cache', $cache);
 
 // Session
@@ -151,6 +147,8 @@ if (isset($request->server['HTTP_ACCEPT_LANGUAGE']) && $request->server['HTTP_AC
 
 				if (in_array($browser_language, $locale)) {
 					$detect = $key;
+
+					break 2;
 				}
 			}
 		}
@@ -180,21 +178,35 @@ $config->set('config_language', $languages[$code]['code']);
 
 // Language
 $language = new Language($languages[$code]['directory']);
-$language->load($languages[$code]['filename']);
+$language->load('default');
 $registry->set('language', $language);
 
 // Document
 $registry->set('document', new Document());
 
 // Customer
-$registry->set('customer', new Customer($registry));
+$customer = new Customer($registry);
+$registry->set('customer', $customer);
+
+// Customer Group
+if ($customer->isLogged()) {
+	$config->set('config_customer_group_id', $customer->getGroupId());
+} elseif (isset($session->data['customer']) && isset($session->data['customer']['customer_group_id'])) {
+	// For API calls
+	$config->set('config_customer_group_id', $session->data['customer']['customer_group_id']);
+} elseif (isset($session->data['guest']) && isset($session->data['guest']['customer_group_id'])) {
+	$config->set('config_customer_group_id', $session->data['guest']['customer_group_id']);
+}
+
+// Tracking Code
+if (isset($request->get['tracking'])) {
+	setcookie('tracking', $request->get['tracking'], time() + 3600 * 24 * 1000, '/');
+
+	$db->query("UPDATE `" . DB_PREFIX . "marketing` SET clicks = (clicks + 1) WHERE code = '" . $db->escape($request->get['tracking']) . "'");
+}
 
 // Affiliate
 $registry->set('affiliate', new Affiliate($registry));
-
-if (isset($request->get['tracking'])) {
-	setcookie('tracking', $request->get['tracking'], time() + 3600 * 24 * 1000, '/');
-}
 
 // Currency
 $registry->set('currency', new Currency($registry));
@@ -211,11 +223,21 @@ $registry->set('length', new Length($registry));
 // Cart
 $registry->set('cart', new Cart($registry));
 
+// Encryption
+$registry->set('encryption', new Encryption($config->get('config_encryption')));
+
 //OpenBay Pro
 $registry->set('openbay', new Openbay($registry));
 
-// Encryption
-$registry->set('encryption', new Encryption($config->get('config_encryption')));
+// Event
+$event = new Event($registry);
+$registry->set('event', $event);
+
+$query = $db->query("SELECT * FROM " . DB_PREFIX . "event");
+
+foreach ($query->rows as $result) {
+	$event->register($result['trigger'], $result['action']);
+}
 
 // Front Controller
 $controller = new Front($registry);
@@ -225,7 +247,7 @@ $controller->addPreAction(new Action('common/maintenance'));
 
 // SEO URL's
 if (!$seo_type = $config->get('config_seo_url_type')) {
-	$seo_type = 'seo_url';
+       $seo_type = 'seo_url';
 }
 $controller->addPreAction(new Action('common/' . $seo_type));
 
@@ -241,4 +263,3 @@ $controller->dispatch($action, new Action('error/not_found'));
 
 // Output
 $response->output();
-?>

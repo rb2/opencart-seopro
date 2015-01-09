@@ -1,11 +1,11 @@
 <?php
 class Url {
-	private $url;
+	private $domain;
 	private $ssl;
 	private $rewrite = array();
 
-	public function __construct($url, $ssl = '') {
-		$this->url = $url;
+	public function __construct($domain, $ssl = '') {
+		$this->domain = $domain;
 		$this->ssl = $ssl;
 	}
 
@@ -13,9 +13,9 @@ class Url {
 		$this->rewrite[] = $rewrite;
 	}
 
-	public function link($route, $args = '', $connection = 'NONSSL', $code = '') {
-		if ($connection ==  'NONSSL') {
-			$url = $this->url;
+	public function link($route, $args = '', $secure = false, $code = '') {
+		if (!$secure) {
+			$url = $this->domain;
 		} else {
 			$url = $this->ssl;
 		}
