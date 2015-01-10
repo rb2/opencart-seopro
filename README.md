@@ -5,7 +5,14 @@ Should work on oc2010, maybe oc2000. Using oc2000 not recommended: upgrade to oc
 
 This repository contains all modified files, so you can compare them with yours.
 You can use Total Commander (Windows), WinMerge (Windows), Meld (Linux) to compare
-files and folders.
+files and folders. The `upload` folder contains new module files, and `dev-modified`
+folder - all modified core files.
+
+If you are looking for older version (for Opencart v1564), switch to oc1564 branch:
+
+* SeoPro for OC2: [oc2011](https://github.com/rb2/opencart-seopro/tree/oc2011)
+* SeoPro for OC 1.5.x: [oc1564](https://github.com/rb2/opencart-seopro/tree/oc1564)
+
 
 # INSTALLATION
 
@@ -41,14 +48,12 @@ Author: [Yesvik](http://opencartforum.ru/user/6876-yesvik/), 2011
 
 Opencart 2.x
 
-*   Sergey Ogarkov, <https://github.com/ose1955/>, <http://www.OpencartJazz.com/>
+*   [Sergey Ogarkov](https://github.com/ose1955/), <http://www.OpencartJazz.com/>
 
-*   Ruslan Brest, <http://rb.labtodo.com>, <http://www.OpencartJazz.com/>
+*   [Ruslan Brest](http://rb.labtodo.com), <http://www.OpencartJazz.com/>
 
-    [rb / rb2](https://opencartforum.com/user/10112-rb2/)
+    [rb / rb2](https://opencartforum.com/user/10112-rb2/) (opencartforum.ru)
 
-    <https://github.com/rb2/opencart-seopro/tree/oc2011>
-    Contains full set of changed files (no vQmod; compare files and make changes)
 
 
 Opencart / ocStore 1.5.x
@@ -61,10 +66,6 @@ Opencart / ocStore 1.5.x
 
 *   [rb / rb2](https://opencartforum.com/user/10112-rb2/)
     (Ruslan Brest), <http://rb.labtodo.com>
-
-    <https://github.com/rb2/opencart-seopro/tree/oc1564>:
-    SeoPro for Opencart v1.5.6.4.
-    Contains full set of changed files (no vQmod; compare files and make changes)
 
 
 # Дубли страниц, SeoPro
