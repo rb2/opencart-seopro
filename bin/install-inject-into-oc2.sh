@@ -34,9 +34,9 @@ BASE="$HOME/webproject/oc/oc2011/public_html"
 
 ## new module files
 cd ../upload
-ln -s --force `pwd`/catalog/controller/common/seo_pro.php          ${BASE}/catalog/controller/common/seo_pro.php
-#ln -s --force `pwd`/admin/language/english/module/ocjazz_markup.php    ${BASE}/admin/language/english/module/ocjazz_markup.php
-#ln -s --force `pwd`/admin/language/russian/module/ocjazz_markup.php    ${BASE}/admin/language/russian/module/ocjazz_markup.php
+ln -s --force `pwd`/catalog/controller/common/seo_pro.php          		       ${BASE}/catalog/controller/common/seo_pro.php
+ln -s --force `pwd`/catalog/controller/module/language.php    			       ${BASE}/catalog/controller/module/language.php
+ln -s --force `pwd`/catalog/view/theme/default/template/module/language.tpl	       ${BASE}/catalog/view/theme/default/template/module/language.tpl
 #ln -s --force `pwd`/admin/view/template/module/ocjazz_markup.tpl       ${BASE}/admin/view/template/module/ocjazz_markup.tpl
 
 ## change existing core files

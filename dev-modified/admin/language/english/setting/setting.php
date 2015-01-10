@@ -21,9 +21,6 @@ $_['text_mail']                        = 'Mail';
 $_['text_smtp']                        = 'SMTP';
 $_['text_seo_url']                 = 'Default';
 $_['text_seo_pro']                 = 'SeoPro';
-$_['entry_seo_url_type']           = 'Тип ЧПУ:';
-$_['entry_seo_url_include_path']   = 'ЧПУ товаров с категориями:<span class="help">/category/subcategory/product<br />(только для SeoPro)</span>';
-$_['entry_seo_url_postfix']        = 'Окончание ЧПУ:<span class="help">Например .html<br />(только для SeoPro)</span>';
 
 // Entry
 $_['entry_name']                       = 'Store Name';
@@ -124,9 +121,9 @@ $_['entry_secure']                     = 'Use SSL';
 $_['entry_shared']                     = 'Use Shared Sessions';
 $_['entry_robots']                     = 'Robots';
 $_['entry_seo_url']                    = 'Use SEO URLs';
-$_['entry_seo_url_type']			= 'Тип ЧПУ:';
-$_['entry_seo_url_include_path']	= 'ЧПУ товаров с категориями:<span class="help">/category/subcategory/product<br />(только для SeoPro)</span>';
-$_['entry_seo_url_postfix']			= 'Окончание ЧПУ:<span class="help">Например .html<br />(только для SeoPro)</span>';
+$_['entry_seo_url_type']               = 'SEO URL type';
+$_['entry_seo_url_include_path']       = 'SEO URL for product with categories';
+$_['entry_seo_url_postfix']            = 'SEO URL ending';
 $_['entry_file_max_size']	           = 'Max File Size';
 $_['entry_file_ext_allowed']           = 'Allowed File Extensions';
 $_['entry_file_mime_allowed']          = 'Allowed File Mime Types';
@@ -204,6 +201,8 @@ $_['help_password']                    = 'Allow forgotten password to be used fo
 $_['help_encryption']                  = 'Please provide a secret key that will be used to encrypt private information when processing orders.';
 $_['help_compression']                 = 'GZIP for more efficient transfer to requesting clients. Compression level must be between 0 - 9.';
 $_['help_google_analytics']            = 'Login to your <a href="http://www.google.com/analytics/" target="_blank"><u>Google Analytics</u></a> account and after creating your website profile copy and paste the analytics code into this field.';
+$_['help_seo_url_include_path']        = 'SEO URL format: <b>/category/subcategory/product</b> (only for SeoPro)';
+$_['help_seo_url_postfix']             = 'SEO URL extension, such as <b>.html</b> (only for SeoPro)';
 
 // Error
 $_['error_warning']                    = 'Warning: Please check the form carefully for errors!';

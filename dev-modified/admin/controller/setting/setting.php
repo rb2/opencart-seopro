@@ -222,7 +222,9 @@ class ControllerSettingSetting extends Controller {
 		$data['help_encryption'] = $this->language->get('help_encryption');
 		$data['help_compression'] = $this->language->get('help_compression');
 		$data['help_google_analytics'] = $this->language->get('help_google_analytics');
-
+		$data['help_seo_url_include_path'] = $this->language->get('help_seo_url_include_path');
+		$data['help_seo_url_postfix'] = $this->language->get('help_seo_url_postfix');
+		
 		$data['button_save'] = $this->language->get('button_save');
 		$data['button_cancel'] = $this->language->get('button_cancel');
 

@@ -1442,38 +1442,41 @@
                   </label>
                 </div>
               </div>
-<?php die("SEO"); ?>
-			            <tr>
-              <td><?php echo $entry_seo_url_type; ?></td>
-              <td><select name="config_seo_url_type">
-                <?php foreach ($seo_types as $seo_type) { ?>
-                <?php if ($seo_type['type'] == $config_seo_url_type) { ?>
-                <option value="<?php echo $seo_type['type']; ?>" selected="selected"><?php echo $seo_type['name']; ?></option>
-                <?php } else { ?>
-                <option value="<?php echo $seo_type['type']; ?>"><?php echo $seo_type['name']; ?></option>
-                <?php } ?>
-                <?php } ?>
-              </select></td>
-            </tr>
-            <tr>
-              <td><?php echo $entry_seo_url_include_path; ?></td>
-              <td><?php if ($config_seo_url_include_path) { ?>
-                <input type="radio" name="config_seo_url_include_path" value="1" checked="checked" />
-                <?php echo $text_yes; ?>
-                <input type="radio" name="config_seo_url_include_path" value="0" />
-                <?php echo $text_no; ?>
-                <?php } else { ?>
-                <input type="radio" name="config_seo_url_include_path" value="1" />
-                <?php echo $text_yes; ?>
-                <input type="radio" name="config_seo_url_include_path" value="0" checked="checked" />
-                <?php echo $text_no; ?>
-                <?php } ?></td>
-            </tr>
-            <tr>
-              <td><?php echo $entry_seo_url_postfix; ?></td>
-              <td><input type="text" name="config_seo_url_postfix" value="<?php echo $config_seo_url_postfix; ?>" size="3" /></td>
-            </tr>
               <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-seo-url-type"><?php echo $entry_seo_url_type; ?></label>
+                <div class="col-sm-10">
+                  <select name="config_seo_url_type" id="input-seo-url-type" class="form-control">
+                    <?php foreach ($seo_types as $seo_type) { ?>
+	                <?php if ($seo_type['type'] == $config_seo_url_type) { ?>
+	                <option value="<?php echo $seo_type['type']; ?>" selected="selected"><?php echo $seo_type['name']; ?></option>
+	                <?php } else { ?>
+	                <option value="<?php echo $seo_type['type']; ?>"><?php echo $seo_type['name']; ?></option>
+                    <?php } ?>
+                    <?php } ?>
+	              </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $help_seo_url_include_path; ?>"><?php echo $entry_seo_url_include_path; ?></span></label>
+                <div class="col-sm-10">
+                  <label class="radio-inline">
+                    <input type="radio" name="config_seo_url_include_path" value="1" <?php echo $config_seo_url_include_path ? 'checked="checked"' : ''; ?>/>
+                    <?php echo $text_yes; ?>
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="config_seo_url_include_path" value="0" <?php echo !$config_seo_url_include_path ? 'checked="checked"' : ''; ?>/>
+                    <?php echo $text_no; ?>
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-seo-url-postfix"><span data-toggle="tooltip" title="<?php echo $help_seo_url_postfix; ?>"><?php echo $entry_seo_url_postfix; ?></span></label>
+                <div class="col-sm-10">
+                  <input type="text" name="config_seo_url_postfix" value="<?php echo $config_seo_url_postfix; ?>" placeholder="<?php echo $entry_seo_url_postfix; ?>" id="input-seo-url-postfix" class="form-control" />
+                </div>
+              </div>
+             <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-file-max-size"><span data-toggle="tooltip" title="<?php echo $help_file_max_size; ?>"><?php echo $entry_file_max_size; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="config_file_max_size" value="<?php echo $config_file_max_size; ?>" placeholder="<?php echo $entry_file_max_size; ?>" id="input-file-max-size" class="form-control" />

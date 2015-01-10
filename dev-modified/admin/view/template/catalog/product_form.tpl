@@ -336,17 +336,19 @@
                 </div>
               </div>
               <div class="form-group">
-<?php die("FIX SEO"); ?>				<td><?php echo $entry_main_category; ?></td>
-              <td><select name="main_category_id">
-                <option value="0" selected="selected"><?php echo $text_none; ?></option>
-                <?php foreach ($product_categories as $category) { ?>
-                <?php if ($category['category_id'] == $main_category_id) { ?>
-                <option value="<?php echo $category['category_id']; ?>" selected="selected"><?php echo $category['name']; ?></option>
-                <?php } else { ?>
-                <option value="<?php echo $category['category_id']; ?>"><?php echo $category['name']; ?></option>
-                <?php } ?>
-                <?php } ?>
-              </select></td>
+                <label class="col-sm-2 control-label" for="input-main-category-id"><?php echo $entry_main_category; ?></label>
+                <div class="col-sm-10">
+                  <select name="main_category_id" id="input-main-category-id" class="form-control">
+                    <?php foreach ($product_categories as $category) { ?>
+	                <?php if ($category['category_id'] == $main_category_id) { ?>
+	                <option value="<?php echo $category['category_id']; ?>" selected="selected"><?php echo $category['name']; ?></option>
+	                <?php } else { ?>
+	                <option value="<?php echo $category['category_id']; ?>"><?php echo $category['name']; ?></option>
+                    <?php } ?>
+                    <?php } ?>
+	              </select>
+                </div>
+              </div>
             </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-category"><span data-toggle="tooltip" title="<?php echo $help_category; ?>"><?php echo $entry_category; ?></span></label>
