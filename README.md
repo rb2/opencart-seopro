@@ -62,7 +62,8 @@ Opencart / ocStore 1.5.x
 *   [rb / rb2](https://opencartforum.com/user/10112-rb2/)
     (Ruslan Brest), <http://rb.labtodo.com>
 
-    <https://github.com/rb2/opencart-seopro>
+    <https://github.com/rb2/opencart-seopro/tree/oc1564>:
+    SeoPro for Opencart v1.5.6.4.
     Contains full set of changed files (no vQmod; compare files and make changes)
 
 
