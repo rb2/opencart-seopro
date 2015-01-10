@@ -169,7 +169,7 @@ Author: [Yesvik](http://opencartforum.ru/user/6876-yesvik/), 2011
 git shortlog -ne --no-merges | sed 's/\:$/\n/' >> CONTRIBUTORS.md
 ````
 
-Shvarev Ruslan <shvarev.ruslan@otr.ru> (7):
+Shvarev Ruslan (7):
 
       first commit
       add files
@@ -179,11 +179,11 @@ Shvarev Ruslan <shvarev.ruslan@otr.ru> (7):
       multilang cross-browser fix
       add support any query redirect
 
-Евгений <commanddotcom@yandex.ru> (1):
+Евгений (1):
 
       Update seo_pro.php
 
-Ruslan Brest <rb@labtodo.com> (7):
+Ruslan Brest (7):
 
       Add more info to README
       README: fix typo
