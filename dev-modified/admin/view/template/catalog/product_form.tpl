@@ -349,7 +349,6 @@
 	              </select>
                 </div>
               </div>
-            </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-category"><span data-toggle="tooltip" title="<?php echo $help_category; ?>"><?php echo $entry_category; ?></span></label>
                 <div class="col-sm-10">

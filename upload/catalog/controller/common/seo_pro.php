@@ -75,7 +75,7 @@ class ControllerCommonSeoPro extends Controller {
 		$this->config->set('config_language', $this->languages[$code]['code']);
 
 		$language = new Language($this->languages[$code]['directory']);
-		$language->load($this->languages[$code]['filename']);
+		$language->load($this->languages[$code]['directory']);
 		$this->registry->set('language', $language);
 
 
@@ -155,7 +155,7 @@ class ControllerCommonSeoPro extends Controller {
 			$this->validate();
 
 			if (isset($this->request->get['route'])) {
-				return $this->forward($this->request->get['route']);
+				return new Action($this->request->get['route']);
 			}
 		}
 	}
