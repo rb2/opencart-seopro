@@ -1,12 +1,13 @@
-# Seo Pro: INSTALLATION
+# Seo Pro for OC2 (Opencart v2)
 
-Tested on Opencart v1.5.6.4 (oc1564).
-Should work on all oc15x versions.
+Tested on Opencart v2.0.1.1 (oc2011).
+Should work on oc2010, maybe oc2000. Using oc2000 not recommended: upgrade to oc2011 instead.
 
 This repository contains all modified files, so you can compare them with yours.
 You can use Total Commander (Windows), WinMerge (Windows), Meld (Linux) to compare
 files and folders.
 
+# INSTALLATION
 
 * execute SQL query
 
@@ -37,6 +38,20 @@ files and folders.
 Author: [Yesvik](http://opencartforum.ru/user/6876-yesvik/), 2011
 
 ## Contributors
+
+Opencart 2.x
+
+*   Sergey Ogarkov, <https://github.com/ose1955/>, <http://www.OpencartJazz.com/>
+
+*   Ruslan Brest, <http://rb.labtodo.com>, <http://www.OpencartJazz.com/>
+
+    [rb / rb2](https://opencartforum.com/user/10112-rb2/)
+
+    <https://github.com/rb2/opencart-seopro/tree/oc2011>
+    Contains full set of changed files (no vQmod; compare files and make changes)
+
+
+Opencart / ocStore 1.5.x
 
 *   [freelancer](https://opencartforum.com/user/12381-freelancer/)
     (Ruslan Shvarev), <https://github.com/pavlickm/seopro>
