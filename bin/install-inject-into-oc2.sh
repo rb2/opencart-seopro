@@ -26,8 +26,8 @@ BASE="$HOME/webproject/oc/oc2011/public_html"
 # ------------------------------------------------------------------------------------
 
 ## make structure of folders
-#mkdir -p ${BASE}/admin/controller/rbose/
-#mkdir -p ${BASE}/admin/controller/module/
+mkdir -p ${BASE}/catalog/controller/module/
+mkdir -p ${BASE}/catalog/view/theme/default/template/module/
 #mkdir -p ${BASE}/admin/language/english/module/
 #mkdir -p ${BASE}/admin/language/english/rbose/
 #mkdir -p ${BASE}/admin/language/russian/module/

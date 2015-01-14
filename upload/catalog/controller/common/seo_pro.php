@@ -137,9 +137,6 @@ class ControllerCommonSeoPro extends Controller {
 				$this->request->get['route'] = 'product/category';
 			} elseif (isset($this->request->get['manufacturer_id'])) {
 				$this->request->get['route'] = 'product/manufacturer/product';
-				if(in_array(substr(VERSION, 0, 5), array('1.5.4', '1.5.5'))) {
-					$this->request->get['route'] = 'product/manufacturer/info';
-				}
 			} elseif (isset($this->request->get['information_id'])) {
 				$this->request->get['route'] = 'information/information';
 			} elseif(isset($this->cache_data['queries'][$route_])) {
@@ -216,11 +213,7 @@ class ControllerCommonSeoPro extends Controller {
 			$link = $this->config->get('config_url');
 		}
 
-		if ($code != $this->config_language){
-			$link .= $code . '/index.php?route=' . $route;
-		} else{
-			$link .= 'index.php?route=' . $route;
-		}
+		$link .= $code . '/index.php?route=' . $route;
 
 		if (count($data)) {
 			$link .= '&amp;' . urldecode(http_build_query($data, '', '&amp;'));
@@ -279,11 +272,7 @@ class ControllerCommonSeoPro extends Controller {
 
 		if ($seo_url == '') return $link;
 
-		if($code != $this->config_language) {
-			$seo_url = $code . '/' . trim($seo_url, '/');
-		} else {
-			$seo_url = trim($seo_url, '/');
-		}
+		$seo_url = $code . '/' . trim($seo_url, '/');
 
 		if ($component['scheme'] == 'https') {
 			$seo_url = $this->config->get('config_ssl') . $seo_url;
