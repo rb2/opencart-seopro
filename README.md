@@ -41,6 +41,18 @@ If you are looking for older version (for Opencart v1564), switch to oc1564 bran
         }
         $controller->addPreAction(new Action('common/' . $seo_type));
 
+* rename `.htaccess.txt` to `.htaccess`, check `RewriteBase` setting
+
+* Go to Admin backend:
+    * edit products (set "Main category" in "Links" tab),
+    * edit categories (seokeyword field should be filled everywhere),
+    * go to shop settings, tab Server
+        - switch "SEO URL Type" from default (SeoUrl) to SeoPro,
+        - select "SEO URL for product with categories" - if YES, the URL will be
+            like `example.com/category-subcategory/subcategory/product.html`,
+            if NO - like `example.com/product.html`
+        - select "SEO URL ending" (for example: ".html")
+
 
 # What the main idea of SeoPro and what the difference from default SeoUrl
 
