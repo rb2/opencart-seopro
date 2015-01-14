@@ -58,3 +58,5 @@ ln -s --force `pwd`/admin/model/catalog/product.php              ${BASE}/admin/m
 ln -s --force `pwd`/admin/view/template/catalog/product_form.tpl ${BASE}/admin/view/template/catalog/product_form.tpl
 ln -s --force `pwd`/admin/view/template/setting/setting.tpl      ${BASE}/admin/view/template/setting/setting.tpl
 ln -s --force `pwd`/index.php                                    ${BASE}/index.php
+ln -s --force `pwd`/catalog/controller/common/language.php       ${BASE}/catalog/controller/common/language.php
+ln -s --force `pwd`/catalog/view/theme/default/template/common/language.tpl   ${BASE}/catalog/view/theme/default/template/common/language.tpl
