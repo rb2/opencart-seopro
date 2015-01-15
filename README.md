@@ -1,12 +1,13 @@
 # Seo Pro for OC2 (Opencart v2)
 
 Tested on Opencart v2.0.1.1 (oc2011).
+
 Should work on oc2010, maybe oc2000. Using oc2000 not recommended: upgrade to oc2011 instead.
 
 This repository contains all modified files, so you can compare them with yours.
-You can use Total Commander (Windows), WinMerge (Windows), Meld (Linux) to compare
-files and folders. The `upload` folder contains new module files, and `dev-modified`
-folder - all modified core files.
+You can use Total Commander (Windows), WinMerge (Windows), Meld (Linux) to
+compare files and folders. The `upload` folder contains new module files, and
+`dev-modified` folder - all modified core files.
 
 If you are looking for older version (for Opencart v1564), switch to oc1564 branch:
 
@@ -34,12 +35,13 @@ If you are looking for older version (for Opencart v1564), switch to oc1564 bran
 
         $controller->addPreAction(new Action('common/seo_url'));
 
-    and replace this line with following:
+    and replace this line with following
 
         if (!$seo_type = $config->get('config_seo_url_type')) {
             $seo_type = 'seo_url';
         }
         $controller->addPreAction(new Action('common/' . $seo_type));
+
 
 ## Finalize install: check settings, switch to SeoPro
 
@@ -131,7 +133,6 @@ Opencart / ocStore 1.5.x
 
 *   [rb / rb2](https://opencartforum.com/user/10112-rb2/)
     (Ruslan Brest), <http://rb.labtodo.com>
-
 
 ## Contributions (SeoPro/OC2)
 
