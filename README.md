@@ -47,6 +47,14 @@ If you are looking for older version (for Opencart v1564), switch to oc1564 bran
 
 * rename `.htaccess.txt` to `.htaccess`, check `RewriteBase` setting
 
+        RewriteBase /
+        # RewriteBase /shop/
+
+        RewriteRule ^sitemap.xml$       index.php?route=feed/google_sitemap [L]
+        RewriteRule ^ru/sitemap.xml$ ru/index.php?route=feed/google_sitemap [L]
+        RewriteRule ^en/sitemap.xml$ en/index.php?route=feed/google_sitemap [L]
+
+
 * Go to Admin backend:
     * edit products (set "Main category" in "Links" tab),
     * edit categories (seokeyword field should be filled everywhere),
