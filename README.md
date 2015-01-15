@@ -41,6 +41,8 @@ If you are looking for older version (for Opencart v1564), switch to oc1564 bran
         }
         $controller->addPreAction(new Action('common/' . $seo_type));
 
+## Finalize install: check settings, switch to SeoPro
+
 * rename `.htaccess.txt` to `.htaccess`, check `RewriteBase` setting
 
 * Go to Admin backend:
