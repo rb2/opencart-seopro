@@ -42,8 +42,17 @@ If you are looking for older version (for Opencart v1564), switch to oc1564 bran
         }
         $controller->addPreAction(new Action('common/' . $seo_type));
 
+* fix wrong "canonical" link for homepage: open file
+    `catalog/controller/common/home.php`, find line
 
-## Finalize install: check settings, switch to SeoPro
+        $this->document->addLink(HTTP_SERVER, 'canonical');
+
+    and replace it with:
+
+        $this->document->addLink($this->url->link('common/home'), 'canonical');
+
+
+## Finalize install: check personal settings, switch to SeoPro
 
 * rename `.htaccess.txt` to `.htaccess`, check `RewriteBase` setting
 
@@ -54,6 +63,7 @@ If you are looking for older version (for Opencart v1564), switch to oc1564 bran
         RewriteRule ^ru/sitemap.xml$ ru/index.php?route=feed/google_sitemap [L]
         RewriteRule ^en/sitemap.xml$ en/index.php?route=feed/google_sitemap [L]
 
+    add rules for all languages you use on the site;
 
 * Go to Admin backend:
     * edit products (set "Main category" in "Links" tab),
