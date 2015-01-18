@@ -26,10 +26,17 @@ BASE="$HOME/webproject/oc/oc2011/public_html"
 # ------------------------------------------------------------------------------------
 
 ## make structure of folders
-#mkdir -p ${BASE}/admin/view/template/ocjazz/
+mkdir -p ${BASE}/admin/controller/module/
+mkdir -p ${BASE}/admin/language/english/module/
+mkdir -p ${BASE}/admin/language/russian/module/
+mkdir -p ${BASE}/admin/view/template/module/
 
 ## new module files
 cd ../upload
+ln -s --force `pwd`/admin/controller/module/ocjazz_seopro.php               ${BASE}/admin/controller/module/ocjazz_seopro.php
+ln -s --force `pwd`/admin/language/english/module/ocjazz_seopro.php         ${BASE}/admin/language/english/module/ocjazz_seopro.php
+ln -s --force `pwd`/admin/language/russian/module/ocjazz_seopro.php         ${BASE}/admin/language/russian/module/ocjazz_seopro.php
+ln -s --force `pwd`/admin/view/template/module/ocjazz_seopro.tpl            ${BASE}/admin/view/template/module/ocjazz_seopro.tpl
 ln -s --force `pwd`/catalog/controller/common/seo_pro.php                   ${BASE}/catalog/controller/common/seo_pro.php
 
 ## change existing core files
