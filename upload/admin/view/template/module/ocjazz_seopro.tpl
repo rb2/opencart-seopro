@@ -1,10 +1,13 @@
 <?php
-################################################################################################
-# Russian Language Installer
-# Module for install and configure Russian language
-# Copyright (c) 2014 Sergey Ogarkov <sogarkov@gmail.com>
-# GNU GPL v.3
-################################################################################################
+/**
+ * Seopro Module
+ * 
+ * @copyright 2015 OpenCartJazz
+ * @link http//www.opencartjazz.com
+ * @author Sergey Ogarkov <sogarkov@gmail.com>
+ * 
+ * @license GNU GPL v.3
+ */
 ?>
 <?php echo $header; ?><?php echo $column_left; ?>
 <div id="content">

@@ -1,10 +1,13 @@
 <?php
-################################################################################################
-# SeoPro Module
-# Description
-# Copyright (c) 2015 Sergey Ogarkov <sogarkov@gmail.com>
-# GNU GPL v.3
-################################################################################################
+/**
+ * Seopro Module
+ * 
+ * @copyright 2015 OpenCartJazz
+ * @link http//www.opencartjazz.com
+ * @author Sergey Ogarkov <sogarkov@gmail.com>
+ * 
+ * @license GNU GPL v.3
+ */
 
 // Heading Goes here:
 $_['heading_title']    = '[OCJazz] SeoPro';
