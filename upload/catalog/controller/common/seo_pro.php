@@ -353,7 +353,12 @@ class ControllerCommonSeoPro extends Controller {
 	}
 
 	private function validate() {
-		if (isset($this->request->get['route']) && $this->request->get['route'] == 'error/not_found') {
+		$skip_routes = array(
+			'error/not_found',
+			'api/login',
+			'api/order/history'
+		);
+		if (isset($this->request->get['route']) && in_array($this->request->get['route'], $skip_routes)) {
 			return;
 		}
 		if(empty($this->request->get['route'])) {
