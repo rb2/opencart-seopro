@@ -45,10 +45,12 @@ ln -s --force `pwd`/index.php                                    ${BASE}/index.p
 ln -s --force `pwd`/catalog/controller/common/header.php         ${BASE}/catalog/controller/common/header.php
 ln -s --force `pwd`/admin/controller/catalog/product.php         ${BASE}/admin/controller/catalog/product.php
 ln -s --force `pwd`/admin/controller/setting/setting.php         ${BASE}/admin/controller/setting/setting.php
+ln -s --force `pwd`/admin/controller/sale/order.php              ${BASE}/admin/controller/sale/order.php
 ln -s --force `pwd`/admin/language/english/catalog/product.php   ${BASE}/admin/language/english/catalog/product.php
 ln -s --force `pwd`/admin/language/english/setting/setting.php   ${BASE}/admin/language/english/setting/setting.php
 ln -s --force `pwd`/admin/model/catalog/category.php             ${BASE}/admin/model/catalog/category.php
 ln -s --force `pwd`/admin/model/catalog/product.php              ${BASE}/admin/model/catalog/product.php
+ln -s --force `pwd`/admin/model/openbay/openbay.php              ${BASE}/admin/model/openbay/openbay.php
 ln -s --force `pwd`/admin/view/template/catalog/product_form.tpl ${BASE}/admin/view/template/catalog/product_form.tpl
 ln -s --force `pwd`/admin/view/template/setting/setting.tpl      ${BASE}/admin/view/template/setting/setting.tpl
 ln -s --force `pwd`/catalog/controller/common/language.php       ${BASE}/catalog/controller/common/language.php
