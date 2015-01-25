@@ -353,7 +353,7 @@ class ControllerCommonSeoPro extends Controller {
 	}
 
 	private function validate() {
-		if (isset($this->request->get['route']) && $this->request->get['route'] == 'error/not_found') {
+		if (isset($this->request->get['route']) && ($this->request->get['route'] == 'error/not_found' || preg_match('~^api/~',$this->request->get['route']))) {
 			return;
 		}
 		if(empty($this->request->get['route'])) {
@@ -378,7 +378,7 @@ class ControllerCommonSeoPro extends Controller {
 
 			header($this->request->server['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
 
-			$this->response->redirect($seo);
+			$this->response->redirect($seo,301);
 		}
 	}
 
