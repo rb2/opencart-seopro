@@ -1050,15 +1050,6 @@ class ControllerCatalogProduct extends Controller {
 
 		$data['product_categories'] = array();
 
-        if (isset($this->request->post['main_category_id'])) {
-            $data['main_category_id'] = $this->request->post['main_category_id'];
-        } elseif (isset($product_info)) {
-            $data['main_category_id'] = $this->model_catalog_product->getProductMainCategoryId($this->request->get['product_id']);
-        } else {
-            $data['main_category_id'] = 0;
-        }
-
-
 		foreach ($categories as $category_id) {
 			$category_info = $this->model_catalog_category->getCategory($category_id);
 

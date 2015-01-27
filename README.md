@@ -22,14 +22,7 @@ If you are looking for older version (for Opencart v1564), switch to oc1564 bran
         ALTER TABLE `product_to_category` ADD `main_category` tinyint(1) NOT NULL DEFAULT '0';
 
     **if you use prefix**, add it to the table name (for example: oc_product_to_category);
-
-* copy all files from `upload` folder to the root of your Opencart store.
-    No files will be overwritten, if you install the extension first time;
-
-* compare and make changes to all other files. See `dev-modified` folder.
-
-    GUI tools that can help you compare files and directories:
-    Total Commander (Windows), WinMerge (Windows), Meld (Linux).
+    If you got warning `Error Code: 1060. Duplicate column name 'main_category` then previous version of `seopro` extension had been installed. It is OK, please continue installation.
 
 * Open file `index.php`, find
 
@@ -41,16 +34,6 @@ If you are looking for older version (for Opencart v1564), switch to oc1564 bran
             $seo_type = 'seo_url';
         }
         $controller->addPreAction(new Action('common/' . $seo_type));
-
-* fix wrong "canonical" link for homepage: open file
-    `catalog/controller/common/home.php`, find line
-
-        $this->document->addLink(HTTP_SERVER, 'canonical');
-
-    and replace it with:
-
-        $this->document->addLink($this->url->link('common/home'), 'canonical');
-
 
 ## Finalize install: check personal settings, switch to SeoPro
 
@@ -66,9 +49,13 @@ If you are looking for older version (for Opencart v1564), switch to oc1564 bran
     add rules for all languages you use on the site;
 
 * Go to Admin backend:
+    * install extension `ocjazz-seopro-v2.0.1.ocmod.zip`,
+    * go to the `modifications` menu and click `Refresh` button,
+    * go to the `modules` menu and install `[OCJazz] SeoPro` module,
     * edit products (set "Main category" in "Links" tab),
     * edit categories (seokeyword field should be filled everywhere),
-    * go to shop settings, tab Server
+    * go to shop settings, tab Server:
+        - turn `Use SEO URLs` on,
         - switch "SEO URL Type" from default (SeoUrl) to SeoPro,
         - select "SEO URL for product with categories" - if YES, the URL will be
             like `example.com/category-subcategory/subcategory/product.html`,
