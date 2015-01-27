@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <code>seopro-201150125</code>
+    <name>Seo Pro for oc2011+</name>
+    <version>1.0</version>
+    <author>OpenCartJazz</author>
+    <link>http://www.opencartjazz.com</link>
+    <file path="admin/controller/catalog/product.php">
+        <operation>
+            <search trim="true" index="0"><![CDATA[
+		$data['entry_recurring'] = $this->language->get('entry_recurring');
+            ]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[
+		$data['entry_main_category'] = $this->language->get('entry_main_category');
+            ]]></add>
+        </operation>
+        <operation>
+            <search trim="true" index="0"><![CDATA[
+		$this->load->model('catalog/category');
+            ]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[
+
+		$categories = $this->model_catalog_category->getAllCategories();
+		$data['categories'] = $this->getAllCategories($categories);
+
+		if (isset($this->request->post['main_category_id'])) {
+			$data['main_category_id'] = $this->request->post['main_category_id'];
+		} elseif (isset($product_info)) {
+			$data['main_category_id'] = $this->model_catalog_product->getProductMainCategoryId($this->request->get['product_id']);
+		} else {
+			$data['main_category_id'] = 0;
+		}
+            ]]></add>
+        </operation>
+	<operation>
+            <search regex="true" limit="1" quote="true"><![CDATA[~		$this->response->setOutput(json_encode($json));
+	}
+~]]></search>
+            <add><![CDATA[		$this->response->setOutput(json_encode($json));
+	}
+
+	private function getAllCategories($categories, $parent_id = 0, $parent_name = '') {
+		$output = array();
+
+		if (array_key_exists($parent_id, $categories)) {
+			if ($parent_name != '') {
+				$parent_name .= $this->language->get('text_separator');
+			}
+
+			foreach ($categories[$parent_id] as $category) {
+				$output[$category['category_id']] = array(
+					'category_id' => $category['category_id'],
+					'name'        => $parent_name . $category['name']
+				);
+
+				$output += $this->getAllCategories($categories, $category['category_id'], $parent_name . $category['name']);
+			}
+		}
+
+		return $output;
+	}
+]]></add>
+        </operation>
+    </file>  
+    <file path="admin/controller/sale/order.php">
+        <operation>
+            <search trim="true"><![CDATA[curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[				curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+				curl_setopt($curl, CURLOPT_POSTREDIR, 7);]]></add>
+        </operation>
+    </file>  
+    <file path="admin/controller/setting/setting.php">
+        <operation>
+            <search trim="true" index="0"><![CDATA[$data['entry_google_analytics'] = $this->language->get('entry_google_analytics');]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[		$data['entry_seo_url_type'] = $this->language->get('entry_seo_url_type');
+		$data['entry_seo_url_include_path'] = $this->language->get('entry_seo_url_include_path');
+		$data['entry_seo_url_postfix'] = $this->language->get('entry_seo_url_postfix');
+]]></add>
+        </operation>
+        <operation>
+            <search trim="true" index="0"><![CDATA[$data['help_google_analytics'] = $this->language->get('help_google_analytics');]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[		$data['help_seo_url_include_path'] = $this->language->get('help_seo_url_include_path');
+		$data['help_seo_url_postfix'] = $this->language->get('help_seo_url_postfix');
+]]></add>
+        </operation>
+        <operation>
+            <search trim="true" index="0"><![CDATA[$data['config_seo_url'] = $this->config->get('config_seo_url');]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[		}
+
+		if (isset($this->request->post['config_seo_url_type'])) {
+			$data['config_seo_url_type'] = $this->request->post['config_seo_url_type'];
+		} elseif ($this->config->get('config_seo_url_type')) {
+			$data['config_seo_url_type'] = $this->config->get('config_seo_url_type');
+		} else {
+			$data['config_seo_url_type'] = 'seo_url';
+		}
+
+		$data['seo_types'] = array();
+		$data['seo_types'][] = array('type' => 'seo_url', 'name' => $this->language->get('text_seo_url'));
+		$data['seo_types'][] = array('type' => 'seo_pro', 'name' => $this->language->get('text_seo_pro'));
+
+		if (isset($this->request->post['config_seo_url_include_path'])) {
+			$data['config_seo_url_include_path'] = $this->request->post['config_seo_url_include_path'];
+		} else {
+			$data['config_seo_url_include_path'] = $this->config->get('config_seo_url_include_path');
+		}
+
+		if (isset($this->request->post['config_seo_url_postfix'])) {
+			$data['config_seo_url_postfix'] = $this->request->post['config_seo_url_postfix'];
+		} else {
+			$data['config_seo_url_postfix'] = $this->config->get('config_seo_url_postfix');
+]]></add>
+        </operation>
+    </file>  
+    <file path="admin/language/english/catalog/product.php">
+        <operation>
+            <search trim="true" index="0"><![CDATA[$_['entry_recurring']        = 'Recurring Profile';]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[$_['entry_main_category']    = 'Main Category:';
+]]></add>
+        </operation>
+    </file>  
+    <file path="admin/language/english/setting/setting.php">
+        <operation>
+            <search trim="true" index="0"><![CDATA[$_['text_smtp']                        = 'SMTP';]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[$_['text_seo_url']                 = 'Default';
+$_['text_seo_pro']                 = 'SeoPro';]]></add>
+        </operation>
+        <operation>
+            <search trim="true" index="0"><![CDATA[$_['entry_seo_url']                    = 'Use SEO URLs';]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[$_['entry_seo_url_type']               = 'SEO URL type';
+$_['entry_seo_url_include_path']       = 'SEO URL for product with categories';
+$_['entry_seo_url_postfix']            = 'SEO URL ending';]]></add>
+        </operation>
+        <operation>
+            <search trim="true" index="0"><![CDATA[$_['help_google_analytics']            = 'Login to your <a h]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[$_['help_seo_url_include_path']        = 'SEO URL format: <b>/category/subcategory/product</b> (only for SeoPro)';
+$_['help_seo_url_postfix']             = 'SEO URL extension, such as <b>.html</b> (only for SeoPro)';]]></add>
+        </operation>
+    </file>  
+    <file path="admin/model/catalog/category.php">
+        <operation>
+            <search trim="true" index="0"><![CDATA[public function getTotalCategoriesByLayoutId($layout_id)]]></search>
+            <add position="after" trim="false" offset="4"><![CDATA[	public function getCategoriesByParentId($parent_id = 0) {
+		$query = $this->db->query("SELECT *, (SELECT COUNT(parent_id) FROM " . DB_PREFIX . "category WHERE parent_id = c.category_id) AS children FROM " . DB_PREFIX . "category c LEFT JOIN " . DB_PREFIX . "category_description cd ON (c.category_id = cd.category_id) LEFT JOIN " . DB_PREFIX . "category_to_store c2s ON (c.category_id = c2s.category_id) WHERE c.parent_id = '" . (int)$parent_id . "' AND cd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND c2s.store_id = '" . (int)$this->config->get('config_store_id') . "' ORDER BY c.sort_order, cd.name");
+
+		return $query->rows;
+	}
+
+	public function getAllCategories() {
+		$category_data = $this->cache->get('category.all.' . $this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id'));
+
+		if (!$category_data || !is_array($category_data)) {
+			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category c LEFT JOIN " . DB_PREFIX . "category_description cd ON (c.category_id = cd.category_id) LEFT JOIN " . DB_PREFIX . "category_to_store c2s ON (c.category_id = c2s.category_id) WHERE cd.language_id = '" . (int)$this->config->get('config_language_id') . "' AND c2s.store_id = '" . (int)$this->config->get('config_store_id') . "'  AND c.status = '1' ORDER BY c.parent_id, c.sort_order, cd.name");
+
+			$category_data = array();
+			foreach ($query->rows as $row) {
+				$category_data[$row['parent_id']][$row['category_id']] = $row;
+			}
+
+			$this->cache->set('category.all.' . $this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id'), $category_data);
+		}
+
+		return $category_data;
+	}]]></add>
+        </operation>
+    </file>  
+    <file path="admin/model/catalog/product.php">
+        <operation>
+            <search trim="true" index="0"><![CDATA[if (isset($data['product_category'])]]></search>
+            <add position="after" trim="false" offset="4"><![CDATA[
+		if (isset($data['main_category_id']) && $data['main_category_id'] > 0) {
+			$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$product_id . "' AND category_id = '" . (int)$data['main_category_id'] . "'");
+			$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$data['main_category_id'] . "', main_category = 1");
+		} elseif (isset($data['product_category'][0])) {
+			$this->db->query("UPDATE " . DB_PREFIX . "product_to_category SET main_category = 1 WHERE product_id = '" . (int)$product_id . "' AND category_id = '" . (int)$data['product_category'][0] . "'");
+		}]]></add>
+        </operation>
+        <operation>
+            <search trim="true" index="1"><![CDATA[if (isset($data['product_category']))]]></search>
+            <add position="after" trim="false" offset="4"><![CDATA[
+		if (isset($data['main_category_id']) && $data['main_category_id'] > 0) {
+			$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$product_id . "' AND category_id = '" . (int)$data['main_category_id'] . "'");
+			$this->db->query("INSERT INTO " . DB_PREFIX . "product_to_category SET product_id = '" . (int)$product_id . "', category_id = '" . (int)$data['main_category_id'] . "', main_category = 1");
+		} elseif (isset($data['product_category'])) {
+			$this->db->query("UPDATE " . DB_PREFIX . "product_to_category SET main_category = 1 WHERE product_id = '" . (int)$product_id . "' AND category_id = '" . (int)$data['product_category'][0] . "'");
+		}]]></add>
+        </operation>
+        <operation>
+            <search trim="true" index="0"><![CDATA[return $product_layout_data;]]></search>
+            <add position="after" trim="false" offset="1"><![CDATA[
+	public function getProductMainCategoryId($product_id) {
+		$query = $this->db->query("SELECT category_id FROM " . DB_PREFIX . "product_to_category WHERE product_id = '" . (int)$product_id . "' AND main_category = '1' LIMIT 1");
+
+		return ($query->num_rows ? (int)$query->row['category_id'] : 0);
+	}]]></add>
+        </operation>
+    </file>  
+    <file path="admin/model/openbay/openbay.php">
+        <operation>
+            <search trim="true" index="0"><![CDATA[curl_setopt($curl, CURLOPT_RETURNTRANSFER, true)]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[			curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+			curl_setopt($curl, CURLOPT_POSTREDIR, 7);]]></add>
+        </operation>
+    </file>  
+    <file path="admin/view/template/catalog/product_form.tpl">
+        <operation>
+            <search trim="true" index="0"><![CDATA[<input type="hidden" name="manufacturer_id" value="<?php echo $manufacturer_id; ?>" />]]></search>
+            <add position="after" trim="false" offset="2"><![CDATA[              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-main-category-id"><?php echo $entry_main_category; ?></label>
+                <div class="col-sm-10">
+                  <select name="main_category_id" id="input-main-category-id" class="form-control">
+                    <?php foreach ($product_categories as $category) { ?>
+	                <?php if ($category['category_id'] == $main_category_id) { ?>
+	                <option value="<?php echo $category['category_id']; ?>" selected="selected"><?php echo $category['name']; ?></option>
+	                <?php } else { ?>
+	                <option value="<?php echo $category['category_id']; ?>"><?php echo $category['name']; ?></option>
+                    <?php } ?>
+                    <?php } ?>
+	              </select>
+                </div>
+              </div>]]></add>
+        </operation>
+    </file>  
+    <file path="admin/view/template/setting/setting.tpl">
+        <operation>
+            <search trim="true" index="0"><![CDATA[<input type="radio" name="config_seo_url" value="0" />]]></search>
+            <add position="after" trim="false" offset="5"><![CDATA[              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-seo-url-type"><?php echo $entry_seo_url_type; ?></label>
+                <div class="col-sm-10">
+                  <select name="config_seo_url_type" id="input-seo-url-type" class="form-control">
+                    <?php foreach ($seo_types as $seo_type) { ?>
+	                <?php if ($seo_type['type'] == $config_seo_url_type) { ?>
+	                <option value="<?php echo $seo_type['type']; ?>" selected="selected"><?php echo $seo_type['name']; ?></option>
+	                <?php } else { ?>
+	                <option value="<?php echo $seo_type['type']; ?>"><?php echo $seo_type['name']; ?></option>
+                    <?php } ?>
+                    <?php } ?>
+	              </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label"><span data-toggle="tooltip" title="<?php echo $help_seo_url_include_path; ?>"><?php echo $entry_seo_url_include_path; ?></span></label>
+                <div class="col-sm-10">
+                  <label class="radio-inline">
+                    <input type="radio" name="config_seo_url_include_path" value="1" <?php echo $config_seo_url_include_path ? 'checked="checked"' : ''; ?>/>
+                    <?php echo $text_yes; ?>
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="config_seo_url_include_path" value="0" <?php echo !$config_seo_url_include_path ? 'checked="checked"' : ''; ?>/>
+                    <?php echo $text_no; ?>
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-seo-url-postfix"><span data-toggle="tooltip" title="<?php echo $help_seo_url_postfix; ?>"><?php echo $entry_seo_url_postfix; ?></span></label>
+                <div class="col-sm-10">
+                  <input type="text" name="config_seo_url_postfix" value="<?php echo $config_seo_url_postfix; ?>" placeholder="<?php echo $entry_seo_url_postfix; ?>" id="input-seo-url-postfix" class="form-control" />
+                </div>
+              </div>]]></add>
+        </operation>
+    </file>  
+    <file path="catalog/controller/common/header.php">
+        <operation>
+            <search trim="true" index="0"><![CDATA[$data['name'] = $this->config->get('config_name');]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[		$data['alter_lang'] = $this->getAlterLanguageLinks($this->document->getLinks());]]></add>
+        </operation>
+        <operation>
+            <search trim="true" index="0"><![CDATA[return $this->load->view('default/template/common/header.tpl', $data);]]></search>
+            <add position="after" trim="false" offset="2"><![CDATA[	
+	protected function getAlterLanguageLinks($links) {
+		$result = array();
+		if ($this->config->get('config_seo_url')) {
+			foreach($links as $link) {
+				if($link['rel']=='canonical') {
+					$url=$link['href'];
+					$schema = parse_url($url,PHP_URL_SCHEME);
+					$server = strtolower($schema)=='https' ? HTTPS_SERVER : HTTP_SERVER; 
+					$cur_lang = substr($url, strlen($server),2);
+					$query = substr($url, strlen($server)+2);
+					$this->load->model('localisation/language');
+					$languages = $this->model_localisation_language->getLanguages();
+					$active_langs = array();
+					foreach($languages as $lang) {
+						if($lang['status']) {
+							$active_langs[]=$lang['code'];
+						} 
+					}
+					if(in_array($cur_lang, $active_langs)) {
+						foreach($active_langs as $lang) {
+							$result[$lang] = $server.$lang.($query ? $query : '');
+						}
+					}
+				}
+			}
+		}
+		return $result;
+	}]]></add>
+        </operation>
+    </file>  
+    <file path="catalog/controller/common/home.php">
+        <operation>
+            <search trim="true" index="0"><![CDATA[$this->document->addLink(HTTP_SERVER, 'canonical');]]></search>
+            <add position="replace" trim="false" offset="0"><![CDATA[$this->document->addLink($this->url->link('common/home'), 'canonical');]]></add>
+        </operation>
+    </file>  
+    <file path="catalog/controller/common/language.php">
+        <operation>
+            <search trim="true" index="0"><![CDATA[$data['redirect'] = $this->url->link('common/home');]]></search>
+            <add position="replace" trim="false" offset="0"><![CDATA[			$data['redirect_route'] = 'common/home';]]></add>
+        </operation>
+        <operation>
+            <search trim="true" index="0"><![CDATA[$data['redirect'] = $this->url->link($route, $url, $this->request->server['HTTPS']);]]></search>
+            <add position="replace" trim="false" offset="0"><![CDATA[	$data['redirect_route']=$route;
+			$data['redirect_query']=$url;
+			$data['redirect_ssl']=$this->request->server['HTTPS'];]]></add>
+        </operation>
+	<operation>
+            <search regex="true" limit="1" quote="true"><![CDATA[~		if (isset($this->request->post['redirect'])) {
+			$this->response->redirect($this->request->post['redirect']);~]]></search>
+            <add><![CDATA[		if (isset($this->request->post['redirect_route'])) {
+			$url = $this->url->link($this->request->post['redirect_route'],
+					isset($this->request->post['redirect_query']) ? html_entity_decode($this->request->post['redirect_query']) : '',
+					isset($this->request->post['redirect_ssl']) ? $this->request->post['redirect_ssl'] : '');
+			$this->response->redirect($url);]]></add>
+        </operation>
+    </file>  
+    <file path="catalog/view/theme/default/template/common/header.tpl">
+        <operation>
+            <search trim="true" index="0"><![CDATA[<script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>]]></search>
+            <add position="before" trim="false" offset="0"><![CDATA[<?php foreach ($alter_lang as $lang=>$href) { ?>
+<link href="<?php echo $href; ?>" hreflang="<?php echo $lang; ?>" rel="alternate" />
+<?php } ?>]]></add>
+        </operation>
+    </file>  
+    <file path="catalog/view/theme/default/template/common/language.tpl">
+        <operation>
+            <search trim="true" index="0"><![CDATA[<input type="hidden" name="redirect" value="<?php echo $redirect; ?>" />]]></search>
+            <add position="replace" trim="false" offset="0"><![CDATA[  <input type="hidden" name="redirect_route" value="<?php echo $redirect_route; ?>" />
+  <input type="hidden" name="redirect_query" value="<?php echo $redirect_query; ?>" />
+  <input type="hidden" name="redirect_ssl" value="<?php echo $redirect_ssl; ?>" />]]></add>
+        </operation>
+    </file>  
+</modification>
