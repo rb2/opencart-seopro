@@ -29,7 +29,10 @@ If you are looking for older version (for Opencart v1564), switch to oc1564 bran
         ALTER TABLE `product_to_category` ADD `main_category` tinyint(1) NOT NULL DEFAULT '0';
 
     **if you use prefix**, add it to the table name (for example: oc_product_to_category);
-    If you got warning `Error Code: 1060. Duplicate column name 'main_category` then previous version of `seopro` extension had been installed. It is OK, please continue installation.
+
+    If you got warning `Error Code: 1060. Duplicate column name 'main_category`
+    then previous version of `seopro` extension had been installed. It is OK,
+    please continue installation.
 
 * Open file `index.php`, find
 
@@ -57,6 +60,15 @@ Mini-FAQ
     It pretty simple to do this query manually.
 
     `index.php` cannot be modified via OCMOD, so you need to do it manually anyway.
+
+## ATTN: our OCMOD Multiline fix required for automated install
+
+Please see [OCMOD Multiline fix](http://www.opencartjazz.com/en/opencart-bugfix/oc2011-bugfix-extension-installer)
+([ru](http://www.opencartjazz.com/ru/opencart-bugfix/oc2011-bugfix-extension-installer),
+[en](http://www.opencartjazz.com/en/opencart-bugfix/oc2011-bugfix-extension-installer)).
+
+See also <http://rb.labtodo.com/page/oc2011-bugfix-ocmod-multiline-fix> (RU),
+there is diff file available.
 
 
 ## Finalize install: check personal settings, switch to SeoPro
