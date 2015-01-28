@@ -14,6 +14,13 @@ If you are looking for older version (for Opencart v1564), switch to oc1564 bran
 * SeoPro for OC2: [oc2011](https://github.com/rb2/opencart-seopro/tree/oc2011)
 * SeoPro for OC 1.5.x: [oc1564](https://github.com/rb2/opencart-seopro/tree/oc1564)
 
+# Support
+
+*   to get support please contact us via support forum topic
+    <http://rb.labtodo.com/forum/forum/9/seoprooc2-dlya-opencart-20x/>
+
+    Languages: English, Russian, Ukrainian.
+
 
 # INSTALLATION
 
@@ -35,6 +42,23 @@ If you are looking for older version (for Opencart v1564), switch to oc1564 bran
         }
         $controller->addPreAction(new Action('common/' . $seo_type));
 
+    ATTN (Windows users): Please do not use stupid Windows Notepad, use
+    [Notepad++](http://notepad-plus-plus.org/) for editing files. Files must be
+    saved in UTF-8 encoding without BOM.
+
+Mini-FAQ
+
+- Q: why not include this SQL query in OCMOD istaller?
+- A: because installer will fail if you have used (or tried to use) SeoPro.
+    And we can't said something like "juste delete this column if you want an
+    automated install", because you migt have lot of products edited and
+    `main_category` used i your setup.
+
+    It pretty simple to do this query manually.
+
+    `index.php` cannot be modified via OCMOD, so you need to do it manually anyway.
+
+
 ## Finalize install: check personal settings, switch to SeoPro
 
 * rename `.htaccess.txt` to `.htaccess`, check `RewriteBase` setting
@@ -49,18 +73,19 @@ If you are looking for older version (for Opencart v1564), switch to oc1564 bran
     add rules for all languages you use on the site;
 
 * Go to Admin backend:
-    * install extension `ocjazz-seopro-v2.0.1.ocmod.zip`,
-    * go to the `modifications` menu and click `Refresh` button,
-    * go to the `modules` menu and install `[OCJazz] SeoPro` module,
-    * edit products (set "Main category" in "Links" tab),
-    * edit categories (seokeyword field should be filled everywhere),
-    * go to shop settings, tab Server:
-        - turn `Use SEO URLs` on,
+    *   install extension `ocjazz-seopro-v2.0.1.ocmod.zip`,
+    *   go to the "Extensions / Modifications" menu and click "Refresh" button,
+    *   go to the "Extensions / Modules" menu and install **[OCJazz] SeoPro** module,
+    *   edit products, go to "Links" tab and set "Main category",
+    *   edit categories (seokeyword field must be filled everywhere, in all
+        categories),
+    *   go to shop settings, tab Server:
+        - turn "Use SEO URLs" on,
         - switch "SEO URL Type" from default (SeoUrl) to SeoPro,
-        - select "SEO URL for product with categories" - if YES, the URL will be
-            like `example.com/category-subcategory/subcategory/product.html`,
-            if NO - like `example.com/product.html`
-        - select "SEO URL ending" (for example: ".html")
+        - select "SEO URL for product with categories"
+            - if YES, the URL will be like `example.com/category-subcategory/subcategory/product.html`,
+            - if NO - like `example.com/product.html`
+        - select "SEO URL ending" (for example: ".html") or leave it empty
 
 
 # What the main idea of SeoPro and what the difference from default SeoUrl
