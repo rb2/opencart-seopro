@@ -30,7 +30,7 @@ If you are looking for older version (for Opencart v1564), switch to oc1564 bran
 
     **if you use prefix**, add it to the table name (for example: oc_product_to_category);
 
-    If you got warning `Error Code: 1060. Duplicate column name 'main_category`
+    If you got warning `Error Code: 1060. Duplicate column name 'main_category'`
     then previous version of `seopro` extension had been installed. It is OK,
     please continue installation.
 
@@ -53,7 +53,7 @@ Mini-FAQ
 
 - Q: why not include this SQL query in OCMOD istaller?
 - A: because installer will fail if you have used (or tried to use) SeoPro.
-    And we can't said something like "juste delete this column if you want an
+    And we can't said something like "just delete this column if you want an
     automated install", because you migt have lot of products edited and
     `main_category` used i your setup.
 
