@@ -161,6 +161,12 @@ class ControllerCommonSeoPro extends Controller {
 		if(!$code) {
 			$code = $this->session->data['language'];
 		}
+		if($code == $this->config_language) {
+			$code='';
+		}
+		else {
+			$code .='/';
+		}
 		if (!$this->config->get('config_seo_url')) return $link;
 
 		$seo_url = '';
@@ -213,7 +219,7 @@ class ControllerCommonSeoPro extends Controller {
 			$link = $this->config->get('config_url');
 		}
 
-		$link .= $code . '/index.php?route=' . $route;
+		$link .= $code . 'index.php?route=' . $route;
 
 		if (count($data)) {
 			$link .= '&amp;' . urldecode(http_build_query($data, '', '&amp;'));
@@ -272,7 +278,7 @@ class ControllerCommonSeoPro extends Controller {
 
 		if ($seo_url == '') return $link;
 
-		$seo_url = $code . '/' . trim($seo_url, '/');
+		$seo_url = $code . trim($seo_url, '/');
 
 		if ($component['scheme'] == 'https') {
 			$seo_url = $this->config->get('config_ssl') . $seo_url;
