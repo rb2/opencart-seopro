@@ -4,63 +4,29 @@ Tested on Opencart v2.0.1.1 (oc2011).
 
 Should work on oc2010, maybe oc2000. Using oc2000 not recommended: upgrade to oc2011 instead.
 
-This repository contains all modified files, so you can compare them with yours.
-You can use Total Commander (Windows), WinMerge (Windows), Meld (Linux) to
-compare files and folders. The `upload` folder contains new module files, and
-`dev-modified` folder - all modified core files.
-
 If you are looking for older version (for Opencart v1564), switch to oc1564 branch:
 
 * SeoPro for OC2: [oc2011](https://github.com/rb2/opencart-seopro/tree/oc2011)
 * SeoPro for OC 1.5.x: [oc1564](https://github.com/rb2/opencart-seopro/tree/oc1564)
 
+# Support
+
+*   to get support please contact us via support forum topic
+    <http://rb.labtodo.com/forum/forum/9/seoprooc2-dlya-opencart-20x/>
+
+    Languages: English, Russian, Ukrainian.
 
 # INSTALLATION
 
-* execute SQL query
+This repository contains all modified files, so you can compare them with yours.
+You can use Total Commander (Windows), WinMerge (Windows), Meld (Linux) to
+compare files and folders. The `upload` folder contains new module files, and
+`dev-modified` folder - all modified core files.
+See manual installation instructions in `install-manual.en.txt` file.
 
-        ALTER TABLE `product_to_category` ADD `main_category` tinyint(1) NOT NULL DEFAULT '0';
+If you prefer automated install, we also provide OCMOD version (ocmod.zip).
+See installation instructions in `install-ocmod.en.txt` file.
 
-    **if you use prefix**, add it to the table name (for example: oc_product_to_category);
-    If you got warning `Error Code: 1060. Duplicate column name 'main_category` then previous version of `seopro` extension had been installed. It is OK, please continue installation.
-
-* Open file `index.php`, find
-
-        $controller->addPreAction(new Action('common/seo_url'));
-
-    and replace this line with following
-
-        if (!$seo_type = $config->get('config_seo_url_type')) {
-            $seo_type = 'seo_url';
-        }
-        $controller->addPreAction(new Action('common/' . $seo_type));
-
-## Finalize install: check personal settings, switch to SeoPro
-
-* rename `.htaccess.txt` to `.htaccess`, check `RewriteBase` setting
-
-        RewriteBase /
-        # RewriteBase /shop/
-
-        RewriteRule ^sitemap.xml$       index.php?route=feed/google_sitemap [L]
-        RewriteRule ^ru/sitemap.xml$ ru/index.php?route=feed/google_sitemap [L]
-        RewriteRule ^en/sitemap.xml$ en/index.php?route=feed/google_sitemap [L]
-
-    add rules for all languages you use on the site;
-
-* Go to Admin backend:
-    * install extension `ocjazz-seopro-v2.0.1.ocmod.zip`,
-    * go to the `modifications` menu and click `Refresh` button,
-    * go to the `modules` menu and install `[OCJazz] SeoPro` module,
-    * edit products (set "Main category" in "Links" tab),
-    * edit categories (seokeyword field should be filled everywhere),
-    * go to shop settings, tab Server:
-        - turn `Use SEO URLs` on,
-        - switch "SEO URL Type" from default (SeoUrl) to SeoPro,
-        - select "SEO URL for product with categories" - if YES, the URL will be
-            like `example.com/category-subcategory/subcategory/product.html`,
-            if NO - like `example.com/product.html`
-        - select "SEO URL ending" (for example: ".html")
 
 
 # What the main idea of SeoPro and what the difference from default SeoUrl
