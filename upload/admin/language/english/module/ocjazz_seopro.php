@@ -17,7 +17,12 @@ $_['heading_title']    = '[OCJazz] SeoPro';
 $_['text_module']      = 'Modules';
 $_['text_success']     = 'Module has been modified succesfully';
 $_['text_edit']        = 'Seo parameters';
-$_['no_options']       = 'Module '.$_['heading_title'].' has no options to be configured.';
+
+// Entry
+$_['entry_hide_default'] = 'Hide default language from URL';
+
+// Help
+$_['help_hide_default'] = 'If set, removes language code from the URL if it is equal to the default language';
 
 // buttons
 

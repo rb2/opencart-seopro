@@ -17,7 +17,12 @@ $_['heading_title']    = '[OCJazz] SeoPro';
 $_['text_module']      = 'Модули';
 //$_['text_success']     = 'Module has been modified succesfully';
 $_['text_edit']        = 'Seo параметры';
-$_['no_options']       = 'Модуль '.$_['heading_title'].' не имеет конфигурируемых опций.';
+
+// Entry
+$_['entry_hide_default'] = 'Скрыть язык по умолчанию в URL';
+
+// Help
+$_['help_hide_default'] = 'Если установлен, удаляет код языка из URL, если он является языком по умолчанию.';
 
 // buttons
 

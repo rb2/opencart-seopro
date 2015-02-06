@@ -161,7 +161,7 @@ class ControllerCommonSeoPro extends Controller {
 		if(!$code) {
 			$code = $this->session->data['language'];
 		}
-		if($code == $this->config_language) {
+		if($this->config->get('ocjazz_seopro_hide_default') && $code == $this->config_language) {
 			$code='';
 		}
 		else {
@@ -180,6 +180,18 @@ class ControllerCommonSeoPro extends Controller {
 		unset($data['route']);
 
 		switch ($route) {
+			case 'common/home':
+				if ($component['scheme'] == 'https') {
+					$link = $this->config->get('config_ssl');
+				} else {
+					$link = $this->config->get('config_url');
+				}
+				$link .= $code;
+				if(isset($this->cache_data['queries']['common/home'])) {
+					$link .= $this->cache_data['queries']['common/home'];
+				}
+				return $link;
+				break;
 			case 'product/product':
 				if (isset($data['product_id'])) {
 					$tmp = $data;

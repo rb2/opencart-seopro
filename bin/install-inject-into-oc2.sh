@@ -43,6 +43,7 @@ ln -s --force `pwd`/catalog/controller/common/seo_pro.php                   ${BA
 cd ../dev-modified
 ln -s --force `pwd`/index.php                                    ${BASE}/index.php
 ln -s --force `pwd`/catalog/controller/common/header.php         ${BASE}/catalog/controller/common/header.php
+ln -s --force `pwd`/catalog/controller/common/home.php           ${BASE}/catalog/controller/common/home.php
 ln -s --force `pwd`/admin/controller/catalog/product.php         ${BASE}/admin/controller/catalog/product.php
 ln -s --force `pwd`/admin/controller/setting/setting.php         ${BASE}/admin/controller/setting/setting.php
 ln -s --force `pwd`/admin/controller/sale/order.php              ${BASE}/admin/controller/sale/order.php

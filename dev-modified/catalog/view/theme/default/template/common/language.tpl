@@ -17,7 +17,7 @@
   </div>
   <input type="hidden" name="code" value="" />
   <input type="hidden" name="redirect_route" value="<?php echo $redirect_route; ?>" />
-  <input type="hidden" name="redirect_query" value="<?php echo $redirect_query; ?>" />
+  <input type="hidden" name="redirect_query" value="<?php echo isset($redirect_query) ? $redirect_query : ''; ?>" />
   <input type="hidden" name="redirect_ssl" value="<?php echo $redirect_ssl; ?>" />
   </form>
 </div>
