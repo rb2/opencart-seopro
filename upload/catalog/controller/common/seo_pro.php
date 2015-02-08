@@ -186,7 +186,9 @@ class ControllerCommonSeoPro extends Controller {
 				} else {
 					$link = $this->config->get('config_url');
 				}
-				$link .= $code;
+				if($code != $this->config_language.'/') {
+					$link .= $code;
+				}
 				if(isset($this->cache_data['queries']['common/home'])) {
 					$link .= $this->cache_data['queries']['common/home'];
 				}
