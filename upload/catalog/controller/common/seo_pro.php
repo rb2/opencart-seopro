@@ -374,7 +374,7 @@ class ControllerCommonSeoPro extends Controller {
 
 	private function validate() {
 		if (isset($this->request->get['route']) && ($this->request->get['route'] == 'error/not_found'
-			// || preg_match('~^api/~',$this->request->get['route']) // Masks all api requests
+			|| preg_match('~^api/~',$this->request->get['route']) // Masks all api requests
 				)) {
 			return;
 		}
