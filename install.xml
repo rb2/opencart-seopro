@@ -337,8 +337,46 @@ $_['help_seo_url_postfix']             = 'SEO URL extension, such as <b>.html</b
         <operation>
             <search trim="true" index="0"><![CDATA[<input type="hidden" name="redirect" value="<?php echo $redirect; ?>" />]]></search>
             <add position="replace" trim="false" offset="0"><![CDATA[  <input type="hidden" name="redirect_route" value="<?php echo $redirect_route; ?>" />
-  <input type="hidden" name="redirect_query" value="<?php echo $redirect_query; ?>" />
+  <input type="hidden" name="redirect_query" value="<?php echo isset($redirect_query) ? $redirect_query : ''; ?>" />
   <input type="hidden" name="redirect_ssl" value="<?php echo $redirect_ssl; ?>" />]]></add>
+        </operation>
+    </file>  
+    <file path="catalog/controller/common/home.php">
+	<operation>
+            <search regex="true" limit="1" quote="true"><![CDATA[~if (isset($this->request->get['route'])) {
+			$this->document->addLink($this->url->link('common/home'), 'canonical');
+		}~]]></search>
+            <add><![CDATA[$this->document->addLink($this->getCanonical(), 'canonical');]]></add>
+        </operation>
+        <operation>
+            <search trim="true" index="0"><![CDATA[$this->response->setOutput($this->load->view('default/template/common/home.tpl', $data));]]></search>
+            <add position="after" trim="false" offset="2"><![CDATA[	
+	protected function getCanonical() {
+		$url = HTTP_SERVER;
+		if( $this->config->get('config_seo_url')
+			&& $this->config->get('config_seo_url_type') == 'seo_pro') {
+			$url = $this->url->link('common/home');
+			$query = $this->db->query("SELECT value FROM " . DB_PREFIX . "setting WHERE store_id = '" . (int)$this->config->get('config_store_id') . "' AND `key` ='config_language'");
+				
+			$code = $this->session->data['language'];
+			
+			// Do not show language code for home when default language is always shown
+			if( !$this->config->get('ocjazz_seopro_hide_default') 
+				&& $code == $query->row['value']) 
+			{
+				$component = parse_url($url);
+				if ($component['scheme'] == 'https') {
+					$domain = $this->config->get('config_ssl');
+				} else {
+					$domain = $this->config->get('config_url');
+				}
+					
+				$url = preg_replace('~('.$domain.')('.$code.'/)(.+)~i', '$1$3',$url);
+			}
+		}
+		return $url;
+	}
+]]></add>
         </operation>
     </file>  
 </modification>
