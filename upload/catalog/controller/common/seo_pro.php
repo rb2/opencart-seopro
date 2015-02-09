@@ -64,7 +64,7 @@ class ControllerCommonSeoPro extends Controller {
 
 		$xhttprequested = isset($this->request->server['HTTP_X_REQUESTED_WITH']) && $this->request->server['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest';
 
-		$captcha = isset($this->request->get['route']) && $this->request->get['route']=='product/product/captcha';
+		$captcha = isset($this->request->get['route']) && $this->request->get['route']=='tool/captcha';
 
 		if(!$xhttprequested && !$captcha) {
 			setcookie('language', $code, time() + 60 * 60 * 24 * 30, '/', $this->request->server['HTTP_HOST']);
@@ -186,9 +186,7 @@ class ControllerCommonSeoPro extends Controller {
 				} else {
 					$link = $this->config->get('config_url');
 				}
-				if($code != $this->config_language.'/') {
-					$link .= $code;
-				}
+				$link .= $code;
 				if(isset($this->cache_data['queries']['common/home'])) {
 					$link .= $this->cache_data['queries']['common/home'];
 				}
@@ -374,7 +372,7 @@ class ControllerCommonSeoPro extends Controller {
 
 	private function validate() {
 		if (isset($this->request->get['route']) && ($this->request->get['route'] == 'error/not_found'
-			|| preg_match('~^api/~',$this->request->get['route']) // Masks all api requests
+			// || preg_match('~^api/~',$this->request->get['route']) // Masks all api requests
 				)) {
 			return;
 		}
