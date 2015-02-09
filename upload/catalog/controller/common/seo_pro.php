@@ -186,7 +186,9 @@ class ControllerCommonSeoPro extends Controller {
 				} else {
 					$link = $this->config->get('config_url');
 				}
-				$link .= $code;
+                if($code != $this->config_language.'/') {
+                    $link .= $code;
+                }
 				if(isset($this->cache_data['queries']['common/home'])) {
 					$link .= $this->cache_data['queries']['common/home'];
 				}
@@ -372,7 +374,7 @@ class ControllerCommonSeoPro extends Controller {
 
 	private function validate() {
 		if (isset($this->request->get['route']) && ($this->request->get['route'] == 'error/not_found'
-			// || preg_match('~^api/~',$this->request->get['route']) // Masks all api requests
+			|| preg_match('~^api/~',$this->request->get['route']) // Masks all api requests
 				)) {
 			return;
 		}
