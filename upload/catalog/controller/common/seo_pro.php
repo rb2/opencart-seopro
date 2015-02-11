@@ -75,6 +75,7 @@ class ControllerCommonSeoPro extends Controller {
 		$this->config->set('config_language', $this->languages[$code]['code']);
 
 		$language = new Language($this->languages[$code]['directory']);
+		$language->load('default');
 		$language->load($this->languages[$code]['directory']);
 		$this->registry->set('language', $language);
 
