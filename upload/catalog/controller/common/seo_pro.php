@@ -30,7 +30,7 @@ class ControllerCommonSeoPro extends Controller {
 
 	public function index() {
 
-// language
+		// language
 		$code = $this->config_language;
 
 		if(isset($this->request->get['_route_'])) {
@@ -50,10 +50,12 @@ class ControllerCommonSeoPro extends Controller {
 		}
 
 		if ($code == $this->config_language &&
-					isset($this->request->cookie['language']) &&
-						$this->request->cookie['language'] != $code &&
-							isset($this->request->server['HTTP_X_REQUESTED_WITH']) &&
-								strtolower($this->request->server['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+			isset($this->request->cookie['language']) &&
+			$this->request->cookie['language'] != $code &&
+			isset($this->request->server['HTTP_X_REQUESTED_WITH']) &&
+			strtolower($this->request->server['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'
+			)
+		{
 				$code = $this->request->cookie['language'];
 		}
 

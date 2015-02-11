@@ -14,7 +14,7 @@ If you are looking for older version (for Opencart v1564), switch to oc1564 bran
 *   to get support please contact us via support forum topic
     <http://rb.labtodo.com/forum/forum/9/seoprooc2-dlya-opencart-20x/>
 
-    Languages: English, Russian, Ukrainian.
+    We understand English, Russian, Ukrainian languages.
 
 # INSTALLATION
 
@@ -22,10 +22,10 @@ This repository contains all modified files, so you can compare them with yours.
 You can use Total Commander (Windows), WinMerge (Windows), Meld (Linux) to
 compare files and folders. The `upload` folder contains new module files, and
 `dev-modified` folder - all modified core files.
-See manual installation instructions in `install-manual.en.txt` file.
+See manual installation instructions in `HOWTO-install-manual.en.txt` file.
 
 If you prefer automated install, we also provide OCMOD version (ocmod.zip).
-See installation instructions in `install-ocmod.en.txt` file.
+See installation instructions in `HOWTO-install-ocmod.en.txt` file.
 
 
 
@@ -67,7 +67,7 @@ can have different URLs out of the box with standard SeoUrl (seo_url) library.
     to one canonical URL.
 
     Canonical address of the product now can contain full category path. Or do
-    not use categories-ased path -- this can be selected in settings.
+    not use categories-based path -- this can be selected in settings.
 
 See also:
 
