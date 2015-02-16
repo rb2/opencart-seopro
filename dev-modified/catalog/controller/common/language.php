@@ -27,6 +27,8 @@ class ControllerCommonLanguage extends Controller {
 
 		if (!isset($this->request->get['route'])) {
 			$data['redirect_route'] = 'common/home';
+			$data['redirect_query'] = '';
+			$data['redirect_ssl']   = '';
 		} else {
 			$url_data = $this->request->get;
 
