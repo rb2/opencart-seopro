@@ -49,6 +49,12 @@ class ControllerCommonSeoPro extends Controller {
 			}
 		}
 
+		// Pavillion Theme fix for "original_route" param.
+		// Theme: <http://themeforest.net/item/pavilion-premium-responsive-opencart-theme/9219645>
+		if(isset($this->request->get['original_route'])) {
+			unset($this->request->get['original_route']);
+		}
+
 		if ($code == $this->config_language &&
 			isset($this->request->cookie['language']) &&
 			$this->request->cookie['language'] != $code &&
