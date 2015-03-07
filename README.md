@@ -1,5 +1,17 @@
 # Seo Pro for OC2 (Opencart v2)
 
+SeoPro is an alternative for default "seo_url" library.
+What you will have using SeoPro:
+
+* each product have **single physical URL** and one fixed breadcrumb as result;
+* product still can be assigned to multiple categories;
+* store doesn't have multiple addresses pointing to one page;
+* all database queries to `url_alias` are cached (**increased performance**);
+* **nice URLs on any route**;
+* **language code included in URL**: Google can index product descriptions in
+    all languages!
+* optional **hide default language code in URL**
+
 Tested on Opencart v2.0.1.1 (oc2011).
 
 Should work on oc2010, maybe oc2000. Using oc2000 not recommended: upgrade to oc2011 instead.
