@@ -30,13 +30,12 @@ class ControllerCommonSeoPro extends Controller {
 
 	public function index() {
 
-		// language
+		// Init language code from settings
 		$code = $this->config_language;
 
+		// If language specdified in URI - switch to code from URI
 		if(isset($this->request->get['_route_'])) {
-
 			$route_ = $this->request->get['_route_'];
-
 			$tokens = explode('/', $this->request->get['_route_']);
 
 			if(array_key_exists($tokens[0], $this->languages)) {
@@ -49,28 +48,42 @@ class ControllerCommonSeoPro extends Controller {
 			}
 		}
 
+		// If still initialized with default language AND language presented in cookies -
+		// switch language to code from cookies
+		if ($code == $this->config_language &&
+			isset($this->request->cookie['language']) &&
+			$this->request->cookie['language'] != $code
+			)
+		{
+			$code = $this->request->cookie['language'];
+		}
+
+
 		// Pavillion Theme fix for "original_route" param.
 		// Theme: <http://themeforest.net/item/pavilion-premium-responsive-opencart-theme/9219645>
 		if(isset($this->request->get['original_route'])) {
 			unset($this->request->get['original_route']);
 		}
 
+
+		$xhttprequested =
+			isset($this->request->server['HTTP_X_REQUESTED_WITH'])
+			&& (strtolower($this->request->server['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
+
+		// If initialized with default language code AND receive AJAX request - switch language to
+		// code from cookies
 		if ($code == $this->config_language &&
 			isset($this->request->cookie['language']) &&
 			$this->request->cookie['language'] != $code &&
-			isset($this->request->server['HTTP_X_REQUESTED_WITH']) &&
-			strtolower($this->request->server['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'
+			$xhttprequested
 			)
 		{
-				$code = $this->request->cookie['language'];
+			$code = $this->request->cookie['language'];
 		}
 
 		if(!isset($this->session->data['language']) || $this->session->data['language'] != $code) {
 			$this->session->data['language'] = $code;
 		}
-
-
-		$xhttprequested = isset($this->request->server['HTTP_X_REQUESTED_WITH']) && $this->request->server['HTTP_X_REQUESTED_WITH'] == 'xmlhttprequest';
 
 		$captcha = isset($this->request->get['route']) && $this->request->get['route']=='tool/captcha';
 
