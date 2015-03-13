@@ -48,23 +48,11 @@ class ControllerCommonSeoPro extends Controller {
 			}
 		}
 
-		// If still initialized with default language AND language presented in cookies -
-		// switch language to code from cookies
-		if ($code == $this->config_language &&
-			isset($this->request->cookie['language']) &&
-			$this->request->cookie['language'] != $code
-			)
-		{
-			$code = $this->request->cookie['language'];
-		}
-
-
 		// Pavillion Theme fix for "original_route" param.
 		// Theme: <http://themeforest.net/item/pavilion-premium-responsive-opencart-theme/9219645>
 		if(isset($this->request->get['original_route'])) {
 			unset($this->request->get['original_route']);
 		}
-
 
 		$xhttprequested =
 			isset($this->request->server['HTTP_X_REQUESTED_WITH'])
