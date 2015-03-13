@@ -215,6 +215,15 @@ class ControllerCommonSeoPro extends Controller {
 					if (isset($tmp['tracking'])) {
 						$data['tracking'] = $tmp['tracking'];
 					}
+
+					// Compatibility with "OCJ Merchandising Reports" module.
+					// Save and pass-thru module specific GET parameters.
+					if (isset($tmp['uri'])) {
+						$data['uri'] = $tmp['uri'];
+					}
+					if (isset($tmp['list_type'])) {
+						$data['list_type'] = $tmp['list_type'];
+					}
 				}
 				break;
 
