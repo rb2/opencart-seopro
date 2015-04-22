@@ -25,6 +25,7 @@
 * Зайдите в phpMyAdmin, выберите базу своего опенкарт-магазина. Выполните запрос:
 
         ALTER TABLE `product_to_category` ADD `main_category` tinyint(1) NOT NULL DEFAULT '0';
+        ALTER TABLE `product_to_category` ADD INDEX `main_category` (`main_category`);
 
     **если вы используете префикс таблиц**, добавьте его к имени таблицы
     (например: для префикса `oc_` используйте `oc_product_to_category`);

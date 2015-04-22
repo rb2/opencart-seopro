@@ -16,6 +16,7 @@
 *   open phpMyAdmin and execute SQL query
 
         ALTER TABLE `product_to_category` ADD `main_category` tinyint(1) NOT NULL DEFAULT '0';
+        ALTER TABLE `product_to_category` ADD INDEX `main_category` (`main_category`);
 
     **if you use prefix**, add it to the table name (for example: `oc_product_to_category`);
 
