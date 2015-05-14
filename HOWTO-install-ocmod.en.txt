@@ -11,12 +11,7 @@ installing other extensions - you only need OCMOD Multiline fix to be added.
 ## ATTN: our OCMOD Multiline fix required for automated install
 ---------------------------------------------------------------
 
-Please see [OCMOD Multiline fix](http://www.opencartjazz.com/en/opencart-bugfix/oc2011-bugfix-extension-installer)
-([ru](http://www.opencartjazz.com/ru/opencart-bugfix/oc2011-bugfix-extension-installer),
-[en](http://www.opencartjazz.com/en/opencart-bugfix/oc2011-bugfix-extension-installer)).
-
-See also <http://rb.labtodo.com/page/oc2011-bugfix-ocmod-multiline-fix> (RU),
-there is diff file available.
+Please see [OCMOD Multiline fix](http://www.opencartjazz.com/en/opencart-bugfix/oc2011-bugfix-extension-installer).
 
 
 ## Installation
@@ -88,3 +83,49 @@ Mini-FAQ
             - if YES, the URL will be like `example.com/category-subcategory/subcategory/product.html`,
             - if NO - like `example.com/product.html`
         - select "SEO URL ending" (for example: ".html") or leave it empty
+
+## Nice URLs on any route
+
+You can have nice URL on any URL just by adding aliases to `url_alias` table.
+
+Еxecute SQL query in phpMyAdmin.
+If you use table prefix, add it to the table name (change `url_alias` to
+`YOURPREFIX_url_alias`: for example, `oc_url_alias`).
+
+    INSERT INTO url_alias (query, keyword) VALUES
+    ('common/home',           ''),
+    ('account/wishlist',      'wishlist'),
+    ('account/account',       'my-account'),
+    ('checkout/cart',         'shopping-cart'),
+    ('checkout/checkout',     'checkout'),
+    ('account/login',         'login'),
+    ('account/logout',        'logout'),
+    ('account/order',         'order-history'),
+    ('account/newsletter',    'newsletter'),
+    ('product/special',       'specials'),
+    ('affiliate/account',     'affiliates'),
+    ('checkout/voucher',      'gift-vouchers'),
+    ('product/manufacturer',  'brands'),
+    ('information/contact',   'contact-us'),
+    ('account/return/insert', 'request-return'),
+    ('information/sitemap',   'sitemap'),
+    ('account/forgotten',     'forgot-password'),
+    ('account/download',      'downloads'),
+    ('account/return',        'returns'),
+    ('account/transaction',   'transactions'),
+    ('account/register',      'create-account'),
+    ('product/compare',       'compare-products'),
+    ('product/search',        'search'),
+    ('account/edit',          'edit-account'),
+    ('account/password',      'change-password'),
+    ('account/address',       'address-book'),
+    ('account/reward',        'reward-points'),
+    ('affiliate/edit',        'edit-affiliate-account'),
+    ('affiliate/password',    'change-affiliate-password'),
+    ('affiliate/payment',     'affiliate-payment-options'),
+    ('affiliate/tracking',    'affiliate-tracking-code'),
+    ('affiliate/transaction', 'affiliate-transactions'),
+    ('affiliate/logout',      'affiliate-logout'),
+    ('affiliate/forgotten',   'affiliate-forgot-password'),
+    ('affiliate/register',    'create-affiliate-account'),
+    ('affiliate/login',       'affiliate-login');

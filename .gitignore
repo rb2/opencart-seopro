@@ -1,0 +1,4 @@
+!.gitignore
+
+# Ignore final downloads
+ocjazz-seopro-*.zip

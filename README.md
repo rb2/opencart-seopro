@@ -1,5 +1,17 @@
 # Seo Pro for OC2 (Opencart v2)
 
+SeoPro is an alternative for default "seo_url" library.
+What you will have using SeoPro:
+
+* each product have **single physical URL** and one fixed breadcrumb as result;
+* product still can be assigned to multiple categories;
+* store doesn't have multiple addresses pointing to one page;
+* all database queries to `url_alias` are cached (**increased performance**);
+* **nice URLs on any route**;
+* **language code included in URL**: Google can index product descriptions in
+    all languages!
+* optional **hide default language code in URL**
+
 Tested on Opencart v2.0.1.1 (oc2011).
 
 Should work on oc2010, maybe oc2000. Using oc2000 not recommended: upgrade to oc2011 instead.
@@ -14,7 +26,7 @@ If you are looking for older version (for Opencart v1564), switch to oc1564 bran
 *   to get support please contact us via support forum topic
     <http://rb.labtodo.com/forum/forum/9/seoprooc2-dlya-opencart-20x/>
 
-    Languages: English, Russian, Ukrainian.
+    We understand English, Russian, Ukrainian languages.
 
 # INSTALLATION
 
@@ -22,10 +34,10 @@ This repository contains all modified files, so you can compare them with yours.
 You can use Total Commander (Windows), WinMerge (Windows), Meld (Linux) to
 compare files and folders. The `upload` folder contains new module files, and
 `dev-modified` folder - all modified core files.
-See manual installation instructions in `install-manual.en.txt` file.
+See manual installation instructions in `HOWTO-install-manual.en.txt` file.
 
 If you prefer automated install, we also provide OCMOD version (ocmod.zip).
-See installation instructions in `install-ocmod.en.txt` file.
+See installation instructions in `HOWTO-install-ocmod.en.txt` file.
 
 
 
@@ -67,7 +79,7 @@ can have different URLs out of the box with standard SeoUrl (seo_url) library.
     to one canonical URL.
 
     Canonical address of the product now can contain full category path. Or do
-    not use categories-ased path -- this can be selected in settings.
+    not use categories-based path -- this can be selected in settings.
 
 See also:
 

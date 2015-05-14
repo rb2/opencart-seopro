@@ -1,16 +1,6 @@
 # MANUAL INSTALLATION
 =====================
 
-*   execute SQL query
-
-        ALTER TABLE `product_to_category` ADD `main_category` tinyint(1) NOT NULL DEFAULT '0';
-
-    **if you use prefix**, add it to the table name (for example: `oc_product_to_category`);
-
-    If you got warning `Error Code: 1060. Duplicate column name 'main_category'`
-    then previous version of `seopro` extension had been installed. It is OK,
-    please continue installation.
-
 *   copy all files from `upload` folder to the root of your Opencart store.
     No files will be overwritten, if you install the extension first time;
 
@@ -22,6 +12,16 @@
     Of course, you can just copy and overwrite files if you use version 2.0.1.1
     of Opencart, but you can lose your earlier modifications. In general this is
     not recommended.
+
+*   open phpMyAdmin and execute SQL query
+
+        ALTER TABLE `product_to_category` ADD `main_category` tinyint(1) NOT NULL DEFAULT '0';
+
+    **if you use prefix**, add it to the table name (for example: `oc_product_to_category`);
+
+    If you got warning `Error Code: 1060. Duplicate column name 'main_category'`
+    then previous version of `seopro` extension had been installed. It is OK,
+    please continue installation.
 
 * Open file `index.php`, find
 
@@ -71,3 +71,49 @@
               `example.com/category-subcategory/subcategory/product.html`,
             - if NO - like `example.com/product.html`
         - select "SEO URL ending" (for example: ".html") or leave it empty
+
+## Nice URLs on any route
+
+You can have nice URL on any URL just by adding aliases to `url_alias` table.
+
+Еxecute SQL query in phpMyAdmin.
+If you use table prefix, add it to the table name (change `url_alias` to
+`YOURPREFIX_url_alias`: for example, `oc_url_alias`).
+
+    INSERT INTO url_alias (query, keyword) VALUES
+    ('common/home',           ''),
+    ('account/wishlist',      'wishlist'),
+    ('account/account',       'my-account'),
+    ('checkout/cart',         'shopping-cart'),
+    ('checkout/checkout',     'checkout'),
+    ('account/login',         'login'),
+    ('account/logout',        'logout'),
+    ('account/order',         'order-history'),
+    ('account/newsletter',    'newsletter'),
+    ('product/special',       'specials'),
+    ('affiliate/account',     'affiliates'),
+    ('checkout/voucher',      'gift-vouchers'),
+    ('product/manufacturer',  'brands'),
+    ('information/contact',   'contact-us'),
+    ('account/return/insert', 'request-return'),
+    ('information/sitemap',   'sitemap'),
+    ('account/forgotten',     'forgot-password'),
+    ('account/download',      'downloads'),
+    ('account/return',        'returns'),
+    ('account/transaction',   'transactions'),
+    ('account/register',      'create-account'),
+    ('product/compare',       'compare-products'),
+    ('product/search',        'search'),
+    ('account/edit',          'edit-account'),
+    ('account/password',      'change-password'),
+    ('account/address',       'address-book'),
+    ('account/reward',        'reward-points'),
+    ('affiliate/edit',        'edit-affiliate-account'),
+    ('affiliate/password',    'change-affiliate-password'),
+    ('affiliate/payment',     'affiliate-payment-options'),
+    ('affiliate/tracking',    'affiliate-tracking-code'),
+    ('affiliate/transaction', 'affiliate-transactions'),
+    ('affiliate/logout',      'affiliate-logout'),
+    ('affiliate/forgotten',   'affiliate-forgot-password'),
+    ('affiliate/register',    'create-affiliate-account'),
+    ('affiliate/login',       'affiliate-login');

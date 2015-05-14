@@ -307,7 +307,9 @@ $_['help_seo_url_postfix']             = 'SEO URL extension, such as <b>.html</b
     <file path="catalog/controller/common/language.php">
         <operation>
             <search trim="true" index="0"><![CDATA[$data['redirect'] = $this->url->link('common/home');]]></search>
-            <add position="replace" trim="false" offset="0"><![CDATA[			$data['redirect_route'] = 'common/home';]]></add>
+            <add position="replace" trim="false" offset="0"><![CDATA[			$data['redirect_route'] = 'common/home';
+			$data['redirect_query'] = '';
+			$data['redirect_ssl']   = '';]]></add>
         </operation>
         <operation>
             <search trim="true" index="0"><![CDATA[$data['redirect'] = $this->url->link($route, $url, $this->request->server['HTTPS']);]]></search>
@@ -338,7 +340,7 @@ $_['help_seo_url_postfix']             = 'SEO URL extension, such as <b>.html</b
             <search trim="true" index="0"><![CDATA[<input type="hidden" name="redirect" value="<?php echo $redirect; ?>" />]]></search>
             <add position="replace" trim="false" offset="0"><![CDATA[  <input type="hidden" name="redirect_route" value="<?php echo $redirect_route; ?>" />
   <input type="hidden" name="redirect_query" value="<?php echo isset($redirect_query) ? $redirect_query : ''; ?>" />
-  <input type="hidden" name="redirect_ssl" value="<?php echo $redirect_ssl; ?>" />]]></add>
+  <input type="hidden" name="redirect_ssl" value="<?php echo isset($redirect_ssl) ? $redirect_ssl : ''; ?>" />]]></add>
         </operation>
     </file>  
     <file path="catalog/controller/common/home.php">
