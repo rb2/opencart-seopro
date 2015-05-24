@@ -41,7 +41,7 @@ class ControllerCommonLanguage extends Controller {
 			$url = '';
 
 			if ($url_data) {
-				$url = '&' . urldecode(http_build_query($url_data, '', '&'));
+				$url = '&amp;' . urldecode(http_build_query($url_data, '', '&amp;'));
 			}
 
 			$data['redirect_route']=$route;

@@ -30,8 +30,7 @@ class ControllerCommonSeoPro extends Controller {
 
 	public function index() {
 
-		// Init language code from settings
-		$code = $this->config_language;
+		$code = null;
 
 		// If language specdified in URI - switch to code from URI
 		if(isset($this->request->get['_route_'])) {
@@ -54,29 +53,31 @@ class ControllerCommonSeoPro extends Controller {
 			unset($this->request->get['original_route']);
 		}
 
-		$xhttprequested =
-			isset($this->request->server['HTTP_X_REQUESTED_WITH'])
-			&& (strtolower($this->request->server['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
-
-		// If initialized with default language code AND receive AJAX request - switch language to
-		// code from cookies
-		if ($code == $this->config_language &&
-			isset($this->request->cookie['language']) &&
-			$this->request->cookie['language'] != $code &&
-			$xhttprequested
-			)
-		{
-			$code = $this->request->cookie['language'];
+		// Detect language code
+		if(!isset($code)) {
+			if (isset($this->session->data['language'])) {
+				$code = $this->session->data['language'];
+			} elseif (isset($this->request->cookie['language'])) {
+				$code = $request->cookie['language'];
+			} else {
+				$code = $this->config_language;
+			}
 		}
 
 		if(!isset($this->session->data['language']) || $this->session->data['language'] != $code) {
 			$this->session->data['language'] = $code;
 		}
 
+		
+		$xhttprequested =
+			isset($this->request->server['HTTP_X_REQUESTED_WITH'])
+			&& (strtolower($this->request->server['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
+		
 		$captcha = isset($this->request->get['route']) && $this->request->get['route']=='tool/captcha';
 
 		if(!$xhttprequested && !$captcha) {
-			setcookie('language', $code, time() + 60 * 60 * 24 * 30, '/', $this->request->server['HTTP_HOST']);
+			setcookie('language', $code, time() + 60 * 60 * 24 * 30, '/',
+				($this->request->server['HTTP_HOST'] != 'localhost') ? $this->request->server['HTTP_HOST'] : false);
 		}
 
 
@@ -238,6 +239,7 @@ class ControllerCommonSeoPro extends Controller {
 
 			case 'product/product/review':
 			case 'information/information/info':
+			case 'information/information/agree':
 				return $link;
 				break;
 
