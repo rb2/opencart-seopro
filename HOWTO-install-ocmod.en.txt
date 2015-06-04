@@ -71,7 +71,7 @@ Mini-FAQ
     add rules for all languages you use on the site;
 
 * Go to Admin backend:
-    *   install extension `ocjazz-seopro-v2.0.1.ocmod.zip`,
+    *   install extension `ocjazz-seopro-v2.x.ocmod.zip`,
     *   go to the "Extensions / Modifications" menu and click "Refresh" button,
     *   go to the "Extensions / Modules" menu and install **[OCJazz] SeoPro** module,
     *   edit products, go to "Links" tab and set "Main category",

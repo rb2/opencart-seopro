@@ -1,4 +1,4 @@
-# Seo Pro for OC2 (Opencart v2)
+# SeoPro for OC2 (Opencart v2)
 
 SeoPro is an alternative for default "seo_url" library.
 What you will have using SeoPro:
