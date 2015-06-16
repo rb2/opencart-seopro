@@ -267,7 +267,7 @@ $_['help_seo_url_postfix']             = 'SEO URL extension, such as <b>.html</b
         </operation>
         <operation>
             <search trim="true" index="0"><![CDATA[return $this->load->view('default/template/common/header.tpl', $data);]]></search>
-            <add position="after" trim="false" offset="2"><![CDATA[	
+            <add position="after" trim="false" offset="3"><![CDATA[	
 	protected function getAlterLanguageLinks($links) {
 		$result = array();
 		if ($this->config->get('config_seo_url')) {
