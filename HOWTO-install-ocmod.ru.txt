@@ -86,7 +86,7 @@
 
 * Теперь заходим в админку магазина и устанавливаем OCMOD:
 
-    *   установите расширение `ocjazz-seopro-v2.0.1.ocmod.zip`
+    *   установите расширение `ocjazz-seopro-v203x.ocmod.zip`
         в меню (Extensions / Extension installer),
     *   откройте меню "Extensions / Modifications" и нажмите кнопку ообновления,
     *   откройте пункт меню "Extensions / Modules" и установите модуль
