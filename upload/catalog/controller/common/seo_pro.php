@@ -58,7 +58,7 @@ class ControllerCommonSeoPro extends Controller {
 			if (isset($this->session->data['language'])) {
 				$code = $this->session->data['language'];
 			} elseif (isset($this->request->cookie['language'])) {
-				$code = $request->cookie['language'];
+				$code = $this->request->cookie['language'];
 			} else {
 				$code = $this->config_language;
 			}
