@@ -18,13 +18,15 @@ Should work on oc2010, maybe oc2000. Using oc2000 not recommended: upgrade to oc
 
 If you are looking for older version (for Opencart v1564), switch to oc1564 branch:
 
-* SeoPro for OC2: [oc2011](https://github.com/rb2/opencart-seopro/tree/oc2011)
+* SeoPro for OC2: [oc2011 - oc2020](https://github.com/rb2/opencart-seopro/tree/oc2011), [oc2031](https://github.com/rb2/opencart-seopro/tree/oc2031)
 * SeoPro for OC 1.5.x: [oc1564](https://github.com/rb2/opencart-seopro/tree/oc1564)
 
 # Support
 
 *   to get support please contact us via support forum topic
     <http://rb.labtodo.com/forum/forum/9/seoprooc2-dlya-opencart-20x/>
+
+    or [SeoPro/OC2 module page on Opencartjazz.com](http://www.opencartjazz.com/en/opencart-module/seo/ocj-seopro-oc2)
 
     We understand English, Russian, Ukrainian languages.
 
