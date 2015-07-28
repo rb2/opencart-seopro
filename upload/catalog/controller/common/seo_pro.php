@@ -122,6 +122,11 @@ class ControllerCommonSeoPro extends Controller {
 
 				reset($parts);
 				foreach ($parts as $part) {
+
+					// fix "undefined index" exception,
+					// https://github.com/myopencart/ocStore/commit/51bd518ca3ee3330ae87314472f63def17dcf746
+					if(!isset($queries[$part])) return false;
+
 					$url = explode('=', $queries[$part], 2);
 
 					if ($url[0] == 'category_id') {
