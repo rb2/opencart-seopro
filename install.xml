@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <modification>
-    <code>seopro-201150125</code>
-    <name>SeoPro for Opencart v2</name>
+    <code>seopro-20150125</code>
+    <name>SeoPro for Opencart v2.x</name>
     <version>1.0</version>
     <author>OpencartJazz.com</author>
-    <link>http://www.opencartjazz.com</link>
+    <link>http://www.opencartjazz.com/opencart-module/seo/ocj-seopro-oc2</link>
     <file path="admin/controller/catalog/product.php">
         <operation>
             <search trim="true" index="0"><![CDATA[

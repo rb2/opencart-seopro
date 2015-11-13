@@ -26,7 +26,7 @@ If you are looking for older version (for Opencart v1564), switch to oc1564 bran
 *   to get support please contact us via support forum topic
     <http://rb.labtodo.com/forum/forum/9/seoprooc2-dlya-opencart-20x/>
 
-    or [SeoPro/OC2 module page on Opencartjazz.com](http://www.opencartjazz.com/en/opencart-module/seo/ocj-seopro-oc2)
+    or [SeoPro/OC2 module page on Opencartjazz.com][ocj-seopro2]
 
     We understand English, Russian, Ukrainian languages.
 
@@ -41,6 +41,15 @@ See manual installation instructions in `HOWTO-install-manual.en.txt` file.
 If you prefer automated install, we also provide OCMOD version (ocmod.zip).
 See installation instructions in `HOWTO-install-ocmod.en.txt` file.
 
+Ready to use ocmod.zip can be downloaded either from
+[SeoPro/OC2 module page on Opencartjazz.com][ocj-seopro2] or from
+[extension page on Opencart.com][oc-seopro2]. The Github repository does not
+contain this ZIP file: it can be created by running `bin/deployment.sh`
+script or downloaded on Opencart.com or Opencartjazz.com.
+
+
+[ocj-seopro2]: http://www.opencartjazz.com/en/opencart-module/seo/ocj-seopro-oc2
+[oc-seopro2]: http://www.opencart.com/index.php?route=extension/extension/info&extension_id=20735
 
 
 # What the main idea of SeoPro and what the difference from default SeoUrl
