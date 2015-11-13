@@ -404,6 +404,11 @@ class ControllerCommonSeoPro extends Controller {
 				)) {
 			return;
 		}
+		if (ltrim($this->request->server['REQUEST_URI'], '/') == 'sitemap.xml') {
+			$this->request->get['route'] = 'feed/google_sitemap';
+			return;
+		}
+
 		if(empty($this->request->get['route'])) {
 			$this->request->get['route'] = 'common/home';
 		}
