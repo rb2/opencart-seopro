@@ -32,7 +32,7 @@ class ControllerCommonSeoPro extends Controller {
 
 		$code = null;
 
-		// If language specdified in URI - switch to code from URI
+		// If language specified in URI - switch to code from URI
 		if(isset($this->request->get['_route_'])) {
 			$route_ = $this->request->get['_route_'];
 			$tokens = explode('/', $this->request->get['_route_']);
@@ -68,11 +68,11 @@ class ControllerCommonSeoPro extends Controller {
 			$this->session->data['language'] = $code;
 		}
 
-		
+
 		$xhttprequested =
 			isset($this->request->server['HTTP_X_REQUESTED_WITH'])
 			&& (strtolower($this->request->server['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
-		
+
 		$captcha = isset($this->request->get['route']) && $this->request->get['route']=='tool/captcha';
 
 		if(!$xhttprequested && !$captcha) {
@@ -423,7 +423,6 @@ class ControllerCommonSeoPro extends Controller {
 		}
 
 		if (rawurldecode($url) != rawurldecode($seo)) {
-
 			header($this->request->server['SERVER_PROTOCOL'] . ' 303 See Other');
 
 			$this->response->redirect($seo,303);
