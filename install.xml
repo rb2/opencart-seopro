@@ -111,14 +111,21 @@
 			$data['config_seo_url_postfix'] = $this->config->get('config_seo_url_postfix');
 ]]></add>
         </operation>
-    </file>  
+    </file>
+
     <file path="admin/language/english/catalog/product.php">
         <operation>
             <search trim="true" index="0"><![CDATA[$_['entry_recurring']        = 'Recurring Profile';]]></search>
-            <add position="after" trim="false" offset="0"><![CDATA[$_['entry_main_category']    = 'Main Category:';
-]]></add>
+            <add position="after" trim="false" offset="0"><![CDATA[$_['entry_main_category']    = 'Main Category:';]]></add>
         </operation>
-    </file>  
+    </file>
+    <file path="admin/language/russian/catalog/product.php">
+        <operation>
+            <search trim="true" index="0"><![CDATA[$_['entry_recurring']]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[$_['entry_main_category']    = 'Главная категория:';]]></add>
+        </operation>
+    </file>
+
     <file path="admin/language/english/setting/setting.php">
         <operation>
             <search trim="true" index="0"><![CDATA[$_['text_smtp']                        = 'SMTP';]]></search>
@@ -136,7 +143,26 @@ $_['entry_seo_url_postfix']            = 'SEO URL ending';]]></add>
             <add position="after" trim="false" offset="0"><![CDATA[$_['help_seo_url_include_path']        = 'SEO URL format: <b>/category/subcategory/product</b> (only for SeoPro)';
 $_['help_seo_url_postfix']             = 'SEO URL extension, such as <b>.html</b> (only for SeoPro)';]]></add>
         </operation>
-    </file>  
+    </file>
+    <file path="admin/language/russian/setting/setting.php">
+        <operation>
+            <search trim="true" index="0"><![CDATA[$_['text_smtp']]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[$_['text_seo_url']                 = 'Стандартный Seo_Url';
+$_['text_seo_pro']                 = 'SeoPro';]]></add>
+        </operation>
+        <operation>
+            <search trim="true" index="0"><![CDATA[$_['entry_seo_url']]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[$_['entry_seo_url_type']               = 'Тип SEO URL';
+$_['entry_seo_url_include_path']       = 'SEO URL для товаров включают категории';
+$_['entry_seo_url_postfix']            = 'Окончание SEO URL';]]></add>
+        </operation>
+        <operation>
+            <search trim="true" index="0"><![CDATA[$_['help_google_analytics']]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[$_['help_seo_url_include_path']        = 'Формат SEO URL: <b>/category/subcategory/product</b> (только для SeoPro)';
+$_['help_seo_url_postfix']             = 'Окончание SEO URL, например <b>.html</b> (только для SeoPro)';]]></add>
+        </operation>
+    </file>
+
     <file path="admin/model/catalog/category.php">
         <operation>
             <search trim="true" index="0"><![CDATA[public function getTotalCategoriesByLayoutId($layout_id)]]></search>
