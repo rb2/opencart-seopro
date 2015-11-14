@@ -202,9 +202,9 @@ class ControllerCommonSeoPro extends Controller {
 				} else {
 					$link = $this->config->get('config_url');
 				}
-                if($code != $this->config_language.'/') {
-                    $link .= $code;
-                }
+				if($code != $this->config_language.'/') {
+					$link .= $code;
+				}
 				if(isset($this->cache_data['queries']['common/home'])) {
 					$link .= $this->cache_data['queries']['common/home'];
 				}
@@ -218,18 +218,22 @@ class ControllerCommonSeoPro extends Controller {
 						$data['path'] = $this->getPathByProduct($tmp['product_id']);
 						if (!$data['path']) return $link;
 					}
-					$data['product_id'] = $tmp['product_id'];
-					if (isset($tmp['tracking'])) {
-						$data['tracking'] = $tmp['tracking'];
-					}
 
-					// Compatibility with "OCJ Merchandising Reports" module.
-					// Save and pass-thru module specific GET parameters.
-					if (isset($tmp['uri'])) {
-						$data['uri'] = $tmp['uri'];
-					}
-					if (isset($tmp['list_type'])) {
-						$data['list_type'] = $tmp['list_type'];
+					$allowed_parameters = array(
+						'product_id', 'tracking',
+						// Compatibility with "OCJ Merchandising Reports" module.
+						// Save and pass-thru module specific GET parameters.
+						'uri', 'list_type',
+						// Compatibility with Google Analytics
+						'gclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
+						'type', 'source', 'block', 'position', 'keyword',
+						// Compatibility with Yandex Metrics
+						'yclid'
+						);
+					foreach($allowed_parameters as $ap) {
+						if (isset($tmp[$ap])) {
+							$data[$ap] = $tmp[$ap];
+						}
 					}
 				}
 				break;
@@ -272,6 +276,7 @@ class ControllerCommonSeoPro extends Controller {
 				case 'manufacturer_id':
 				case 'category_id':
 				case 'information_id':
+				case 'order_id':
 
 				case 'search':
 				case 'sub_category':
