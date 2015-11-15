@@ -155,6 +155,17 @@ class ControllerCommonSeoPro extends Controller {
 				$this->request->get['route'] = 'product/manufacturer/info';
 			} elseif (isset($this->request->get['information_id'])) {
 				$this->request->get['route'] = 'information/information';
+
+			// Compatibility with Shopencart News/Blog:
+			} elseif (isset($this->request->get['news_id'])) {
+				$this->request->get['route'] = 'news/article';
+			} elseif (isset($this->request->get['author'])) {
+				$this->request->get['route'] = 'news/ncategory';
+			} elseif (isset($this->request->get['ncat'])) {
+				$this->request->get['route'] = 'news/ncategory';
+			} elseif (isset($this->request->get['author'])) {
+				$this->request->get['route'] = 'news/ncategory';
+
 			} elseif(isset($this->cache_data['queries'][$route_])) {
 					header($this->request->server['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
 					$this->response->redirect($this->cache_data['queries'][$route_]);
@@ -286,6 +297,12 @@ class ControllerCommonSeoPro extends Controller {
 				case 'search':
 				case 'sub_category':
 				case 'description':
+
+				// Compatibility with Shopencart News/Blog:
+				case 'news_id':
+				case 'author':
+				case 'ncat':
+				case 'page':
 
 					$queries[] = $key . '=' . $value;
 					unset($data[$key]);
