@@ -202,9 +202,9 @@ class ControllerCommonSeoPro extends Controller {
 				} else {
 					$link = $this->config->get('config_url');
 				}
-                if($code != $this->config_language.'/') {
-                    $link .= $code;
-                }
+				if($code != $this->config_language.'/') {
+					$link .= $code;
+				}
 				if(isset($this->cache_data['queries']['common/home'])) {
 					$link .= $this->cache_data['queries']['common/home'];
 				}
@@ -212,6 +212,7 @@ class ControllerCommonSeoPro extends Controller {
 				break;
 			case 'product/product':
 				if (isset($data['product_id'])) {
+					// Whitelist GET parameters
 					$tmp = $data;
 					$data = array();
 					if ($this->config->get('config_seo_url_include_path')) {
@@ -243,6 +244,7 @@ class ControllerCommonSeoPro extends Controller {
 				}
 				break;
 
+			// pages retreived by AJAX requests
 			case 'product/product/review':
 			case 'information/information/info':
 			case 'information/information/agree':
@@ -272,6 +274,7 @@ class ControllerCommonSeoPro extends Controller {
 				case 'manufacturer_id':
 				case 'category_id':
 				case 'information_id':
+				case 'order_id':
 
 				case 'search':
 				case 'sub_category':
