@@ -208,7 +208,9 @@ class ControllerCommonSeoPro extends Controller {
 				if(isset($this->cache_data['queries']['common/home'])) {
 					$link .= $this->cache_data['queries']['common/home'];
 				}
+				// Return clean shop link with any GET-parameters stripped off
 				return $link;
+				// (if you want to pass all parameters on homepage as is, comment the line above: `// return $link;`)
 				break;
 			case 'product/product':
 				if (isset($data['product_id'])) {
@@ -219,19 +221,24 @@ class ControllerCommonSeoPro extends Controller {
 						$data['path'] = $this->getPathByProduct($tmp['product_id']);
 						if (!$data['path']) return $link;
 					}
-					$data['product_id'] = $tmp['product_id'];
-					if (isset($tmp['tracking'])) {
-						$data['tracking'] = $tmp['tracking'];
+
+					$allowed_parameters = array(
+						'product_id', 'tracking',
+						// Compatibility with "OCJ Merchandising Reports" module.
+						// Save and pass-thru module specific GET parameters.
+						'uri', 'list_type',
+						// Compatibility with Google Analytics
+						'gclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
+						'type', 'source', 'block', 'position', 'keyword',
+						// Compatibility with Yandex Metrics
+						'yclid'
+						);
+					foreach($allowed_parameters as $ap) {
+						if (isset($tmp[$ap])) {
+							$data[$ap] = $tmp[$ap];
+						}
 					}
 
-					// Compatibility with "OCJ Merchandising Reports" module.
-					// Save and pass-thru module specific GET parameters.
-					if (isset($tmp['uri'])) {
-						$data['uri'] = $tmp['uri'];
-					}
-					if (isset($tmp['list_type'])) {
-						$data['list_type'] = $tmp['list_type'];
-					}
 				}
 				break;
 
