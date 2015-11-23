@@ -139,7 +139,7 @@ $_['entry_seo_url_include_path']       = 'SEO URL for product with categories';
 $_['entry_seo_url_postfix']            = 'SEO URL ending';]]></add>
         </operation>
         <operation>
-            <search trim="true" index="0"><![CDATA[$_['help_google_analytics']            = 'Login to your <a h]]></search>
+            <search trim="true" index="0"><![CDATA[$_['help_seo_url']]]></search>
             <add position="after" trim="false" offset="0"><![CDATA[$_['help_seo_url_include_path']        = 'SEO URL format: <b>/category/subcategory/product</b> (only for SeoPro)';
 $_['help_seo_url_postfix']             = 'SEO URL extension, such as <b>.html</b> (only for SeoPro)';]]></add>
         </operation>
@@ -157,7 +157,7 @@ $_['entry_seo_url_include_path']       = 'SEO URL для товаров вклю
 $_['entry_seo_url_postfix']            = 'Окончание SEO URL';]]></add>
         </operation>
         <operation>
-            <search trim="true" index="0"><![CDATA[$_['help_google_analytics']]]></search>
+            <search trim="true" index="0"><![CDATA[$_['help_seo_url']]]></search>
             <add position="after" trim="false" offset="0"><![CDATA[$_['help_seo_url_include_path']        = 'Формат SEO URL: <b>/category/subcategory/product</b> (только для SeoPro)';
 $_['help_seo_url_postfix']             = 'Окончание SEO URL, например <b>.html</b> (только для SeoPro)';]]></add>
         </operation>
