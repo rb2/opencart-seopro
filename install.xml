@@ -65,8 +65,8 @@
     <file path="admin/controller/sale/order.php">
         <operation>
             <search trim="true"><![CDATA[curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);]]></search>
-            <add position="after" trim="false" offset="0"><![CDATA[				curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-				curl_setopt($curl, CURLOPT_POSTREDIR, 7);]]></add>
+            <add position="after" trim="false" offset="0"><![CDATA[				// curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+				// curl_setopt($curl, CURLOPT_POSTREDIR, 7);]]></add>
         </operation>
     </file>  
     <file path="admin/controller/setting/setting.php">
@@ -224,8 +224,8 @@ $_['help_seo_url_postfix']             = 'Окончание SEO URL, напри
     <file path="admin/model/openbay/openbay.php">
         <operation>
             <search trim="true" index="0"><![CDATA[curl_setopt($curl, CURLOPT_RETURNTRANSFER, true)]]></search>
-            <add position="after" trim="false" offset="0"><![CDATA[			curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-			curl_setopt($curl, CURLOPT_POSTREDIR, 7);]]></add>
+            <add position="after" trim="false" offset="0"><![CDATA[			// curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+			// curl_setopt($curl, CURLOPT_POSTREDIR, 7);]]></add>
         </operation>
     </file>  
     <file path="admin/view/template/catalog/product_form.tpl">
