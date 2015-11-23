@@ -88,7 +88,7 @@
 
     *   установите расширение `ocjazz-seopro-v203x.ocmod.zip`
         в меню (Extensions / Extension installer),
-    *   откройте меню "Extensions / Modifications" и нажмите кнопку ообновления,
+    *   откройте меню "Extensions / Modifications" и нажмите кнопку обновления,
     *   откройте пункт меню "Extensions / Modules" и установите модуль
         **[OCJazz] SeoPro**. После установки нажмите "Редактировать" и обязательно
         сохраните настройки модуля,
