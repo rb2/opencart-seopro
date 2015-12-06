@@ -30,6 +30,22 @@ If you are looking for older version (for Opencart v1564), switch to oc1564 bran
 
     We understand English, Russian, Ukrainian languages.
 
+## Known issues
+
+Known issues are listed on [Opencart SeoPro Github issues page][gh_issues].
+Lot of them might be in Russian, so please use [Google Translate][gt] to understand.
+Feel free to speak in English either in new or old issues.
+
+## How to help
+
+You can help by resolving issues, translate extension to your native language,
+testing on new Opencart versions
+or vote for specific issue by adding a cash bounty on [Bountysource.com][bountysrc].
+
+[gh_issues]: https://github.com/rb2/opencart-seopro/issues
+[gt]: https://translate.google.com/?hl=en&sl=ru&tl=en
+[bountysrc]: https://www.bountysource.com/trackers/2506933-rb2-opencart-seopro
+
 # INSTALLATION
 
 This repository contains all modified files, so you can compare them with yours.
