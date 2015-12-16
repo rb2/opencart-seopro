@@ -241,8 +241,9 @@ class ControllerCommonSeoPro extends Controller {
 						// Compatibility with Google Analytics
 						'gclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
 						'type', 'source', 'block', 'position', 'keyword',
-						// Compatibility with Yandex Metrics
-						'yclid'
+						// Compatibility with Yandex Metrics, Yandex Market
+						'yclid', 'ymclid', 'openstat', 'frommarket',
+						'openstat_service', 'openstat_campaign', 'openstat_ad', 'openstat_source'
 						);
 					foreach($allowed_parameters as $ap) {
 						if (isset($tmp[$ap])) {
