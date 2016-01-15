@@ -125,6 +125,18 @@
             <add position="after" trim="false" offset="0"><![CDATA[$_['entry_main_category']    = 'Главная категория:';]]></add>
         </operation>
     </file>
+    <file path="admin/language/ukrainian/catalog/product.php">
+        <operation>
+            <search trim="true" index="0"><![CDATA[$_['entry_recurring']]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[$_['entry_main_category']    = 'Головна категорія:';]]></add>
+        </operation>
+    </file>
+    <file path="admin/language/uk_UA/catalog/product.php">
+        <operation>
+            <search trim="true" index="0"><![CDATA[$_['entry_recurring']]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[$_['entry_main_category']    = 'Головна категорія:';]]></add>
+        </operation>
+    </file>
 
     <file path="admin/language/english/setting/setting.php">
         <operation>
@@ -160,6 +172,24 @@ $_['entry_seo_url_postfix']            = 'Окончание SEO URL';]]></add>
             <search trim="true" index="0"><![CDATA[$_['help_seo_url']]]></search>
             <add position="after" trim="false" offset="0"><![CDATA[$_['help_seo_url_include_path']        = 'Формат SEO URL: <b>/category/subcategory/product</b> (только для SeoPro)';
 $_['help_seo_url_postfix']             = 'Окончание SEO URL, например <b>.html</b> (только для SeoPro)';]]></add>
+        </operation>
+    </file>
+    <file path="admin/language/ukrainian/setting/setting.php">
+        <operation>
+            <search trim="true" index="0"><![CDATA[$_['text_smtp']]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[$_['text_seo_url']                 = 'Звичайний Seo_Url з Опенкарт';
+$_['text_seo_pro']                 = 'SeoPro';]]></add>
+        </operation>
+        <operation>
+            <search trim="true" index="0"><![CDATA[$_['entry_seo_url']]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[$_['entry_seo_url_type']               = 'Тип SEO URL';
+$_['entry_seo_url_include_path']       = 'SEO URL для товарів містить категорії';
+$_['entry_seo_url_postfix']            = 'Фінальна частина SEO URL';]]></add>
+        </operation>
+        <operation>
+            <search trim="true" index="0"><![CDATA[$_['help_seo_url']]]></search>
+            <add position="after" trim="false" offset="0"><![CDATA[$_['help_seo_url_include_path']        = 'Формат SEO URL: <b>/category/subcategory/product</b> (тільки для SeoPro)';
+$_['help_seo_url_postfix']             = 'Фінальна частина SEO URL, наприклад <b>.html</b> (тільки для SeoPro)';]]></add>
         </operation>
     </file>
 
