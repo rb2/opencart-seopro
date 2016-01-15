@@ -62,23 +62,16 @@
 ]]></add>
         </operation>
     </file>  
-    <file path="admin/controller/sale/order.php">
-        <operation>
-            <search trim="true"><![CDATA[curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);]]></search>
-            <add position="after" trim="false" offset="0"><![CDATA[				// curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-				// curl_setopt($curl, CURLOPT_POSTREDIR, 7);]]></add>
-        </operation>
-    </file>  
     <file path="admin/controller/setting/setting.php">
         <operation>
-            <search trim="true" index="0"><![CDATA[$data['entry_google_analytics'] = $this->language->get('entry_google_analytics');]]></search>
+            <search trim="true" index="0"><![CDATA[$data['entry_seo_url'] = $this->language->get('entry_seo_url');]]></search>
             <add position="after" trim="false" offset="0"><![CDATA[		$data['entry_seo_url_type'] = $this->language->get('entry_seo_url_type');
 		$data['entry_seo_url_include_path'] = $this->language->get('entry_seo_url_include_path');
 		$data['entry_seo_url_postfix'] = $this->language->get('entry_seo_url_postfix');
 ]]></add>
         </operation>
         <operation>
-            <search trim="true" index="0"><![CDATA[$data['help_google_analytics'] = $this->language->get('help_google_analytics');]]></search>
+            <search trim="true" index="0"><![CDATA[$data['help_seo_url'] = $this->language->get('help_seo_url');]]></search>
             <add position="after" trim="false" offset="0"><![CDATA[		$data['help_seo_url_include_path'] = $this->language->get('help_seo_url_include_path');
 		$data['help_seo_url_postfix'] = $this->language->get('help_seo_url_postfix');
 ]]></add>
