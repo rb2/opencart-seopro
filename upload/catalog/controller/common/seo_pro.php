@@ -311,7 +311,15 @@ class ControllerCommonSeoPro extends Controller {
 					break;
 
 				case 'path':
-					$categories = explode('_', $value);
+					// ATTN: user can set any path: path=2_4_1_2_3
+					$category_path = explode('_', $value);
+
+					// find real category path:
+					$category_id = end($category_path);
+					$categories = $this->getPathByCategory($category_id);
+
+					// save all categories queries to find later their aliases
+					$categories = explode('_', $categories);
 					foreach ($categories as $category) {
 						$queries[] = 'category_id=' . $category;
 					}
