@@ -456,9 +456,10 @@ class ControllerCommonSeoPro extends Controller {
 		}
 
 		if (rawurldecode($url) != rawurldecode($seo)) {
-			header($this->request->server['SERVER_PROTOCOL'] . ' 303 See Other');
-
-			$this->response->redirect($seo,303);
+			// header($this->request->server['SERVER_PROTOCOL'] . ' 303 See Other');
+			// $this->response->redirect($seo,303);
+			header($this->request->server['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
+			$this->response->redirect($seo,301);
 		}
 	}
 
