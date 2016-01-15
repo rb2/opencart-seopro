@@ -12,7 +12,7 @@ What you will have using SeoPro:
     all languages!
 * optional **hide default language code in URL**
 
-Tested on Opencart v2.0.1.1 - 2.0.3.1 (oc2011, oc2020, oc2031).
+Tested on Opencart v2.0.1.1 - 2.1.0.1 (oc2011, oc2020, oc2031, oc2101/2102).
 
 Should work on oc2010, maybe oc2000. Using oc2000 not recommended: upgrade to oc2011 instead.
 
