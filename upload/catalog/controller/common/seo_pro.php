@@ -253,7 +253,9 @@ class ControllerCommonSeoPro extends Controller {
 						'type', 'source', 'block', 'position', 'keyword',
 						// Compatibility with Yandex Metrics, Yandex Market
 						'yclid', 'ymclid', 'openstat', 'frommarket',
-						'openstat_service', 'openstat_campaign', 'openstat_ad', 'openstat_source'
+						'openstat_service', 'openstat_campaign', 'openstat_ad', 'openstat_source',
+						// Compatibility with Themeforest Rgen templates (popup with product preview)
+						'urltype'
 						);
 					foreach($allowed_parameters as $ap) {
 						if (isset($tmp[$ap])) {
