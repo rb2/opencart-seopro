@@ -12,13 +12,14 @@ What you will have using SeoPro:
     all languages!
 * optional **hide default language code in URL**
 
-Tested on Opencart v2.0.1.1 - 2.0.3.1 (oc2011, oc2020, oc2031).
+Compatible with Opencart v2.0.1.1 - 2.0.2.0 (oc2011, oc2020).
+For versions v2031-21xx switch to the [oc2031](https://github.com/rb2/opencart-seopro/tree/oc2031) branch.
 
 Should work on oc2010, maybe oc2000. Using oc2000 not recommended: upgrade to oc2011 instead.
 
 If you are looking for older version (for Opencart v1564), switch to oc1564 branch:
 
-* SeoPro for OC2: [oc2011 - oc2020](https://github.com/rb2/opencart-seopro/tree/oc2011), [oc2031](https://github.com/rb2/opencart-seopro/tree/oc2031)
+* SeoPro for OC2: [oc2011 - oc2020](https://github.com/rb2/opencart-seopro/tree/oc2011), [oc2031-oc21xx](https://github.com/rb2/opencart-seopro/tree/oc2031)
 * SeoPro for OC 1.5.x: [oc1564](https://github.com/rb2/opencart-seopro/tree/oc1564)
 
 # Support
