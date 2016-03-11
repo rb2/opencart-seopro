@@ -156,6 +156,12 @@ class ControllerCommonSeoPro extends Controller {
 				$this->request->get['route'] = 'product/manufacturer/info';
 			} elseif (isset($this->request->get['information_id'])) {
 				$this->request->get['route'] = 'information/information';
+
+			} elseif (isset($this->request->get['news_id'])) {
+				$this->request->get['route'] = 'information/news/news';
+			} elseif (isset($this->request->get['posts_id'])) {
+				$this->request->get['route'] = 'information/posts/posts';
+
 			} elseif(isset($this->cache_data['queries'][$route_])) {
 					header($this->request->server['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
 					$this->response->redirect($this->cache_data['queries'][$route_]);
@@ -277,6 +283,9 @@ class ControllerCommonSeoPro extends Controller {
 				case 'search':
 				case 'sub_category':
 				case 'description':
+
+				case 'news_id':
+				case 'posts_id':
 
 					$queries[] = $key . '=' . $value;
 					unset($data[$key]);
