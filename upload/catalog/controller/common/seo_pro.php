@@ -163,8 +163,18 @@ class ControllerCommonSeoPro extends Controller {
 				$this->request->get['route'] = 'news/ncategory';
 			} elseif (isset($this->request->get['ncat'])) {
 				$this->request->get['route'] = 'news/ncategory';
+			} elseif (isset($this->request->get['ncategory_id'])) {
+				$this->request->get['route'] = 'news/ncategory';
 			} elseif (isset($this->request->get['author'])) {
 				$this->request->get['route'] = 'news/ncategory';
+
+			// Compatibility with some unknown Blog (blog/home, blog/category, blog/blog):
+			} elseif (isset($this->request->get['blog_id'])) {
+				$this->request->get['route'] = 'blog/blog';
+			} elseif (isset($this->request->get['blog_category_id'])) {
+				$this->request->get['route'] = 'blog/category';
+				$this->request->get['blogpath'] = $this->request->get['blog_category_id'];
+				unset($this->request->get['blog_category_id']);
 
 			} elseif(isset($this->cache_data['queries'][$route_])) {
 					header($this->request->server['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
@@ -304,6 +314,11 @@ class ControllerCommonSeoPro extends Controller {
 				case 'author':
 				case 'ncat':
 				case 'page':
+
+				// Compatibility with unknown Blog:
+				case 'blog_id':
+				case 'blog_category_id':
+				case 'blogpath':
 
 					$queries[] = $key . '=' . $value;
 					unset($data[$key]);
