@@ -104,6 +104,7 @@ class ControllerCommonSeoPro extends Controller {
 			$route = $this->request->get['_route_'];
 			unset($this->request->get['_route_']);
 			$parts = explode('/', trim(utf8_strtolower($route), '/'));
+
 			list($last_part) = explode('.', array_pop($parts));
 			array_push($parts, $last_part);
 
@@ -431,10 +432,8 @@ class ControllerCommonSeoPro extends Controller {
 		}
 
 		if (rawurldecode($url) != rawurldecode($seo)) {
-
-			header($this->request->server['SERVER_PROTOCOL'] . ' 303 See Other');
-
-			$this->response->redirect($seo,303);
+			header($this->request->server['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
+			$this->response->redirect($seo,301);
 		}
 	}
 
