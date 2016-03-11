@@ -1,13 +1,13 @@
 # Установка через OCMOD
 =======================
 
-## Установка {#installation}
+## Установка                                                     {#installation}
 
 
 * **Перед установкой SeoPro надо установить "OCMOD Multiline fix"**
 
     См.
-    <http://www.opencartjazz.com/ru/opencart-bugfix/oc2011-bugfix-extension-installer>
+    <http://www.opencartjazz.com/ru/oc2011-bugfix-extension-installer>
 
     Он требуется для правильной установки наших OCMOD-модулей.
 
@@ -21,17 +21,6 @@
     установки.
 
 
-
-* Зайдите в phpMyAdmin, выберите базу своего опенкарт-магазина. Выполните запрос:
-
-        ALTER TABLE `product_to_category` ADD `main_category` tinyint(1) NOT NULL DEFAULT '0';
-        ALTER TABLE `product_to_category` ADD INDEX `main_category` (`main_category`);
-
-    **если вы используете префикс таблиц**, добавьте его к имени таблицы
-    (например: для префикса `oc_` используйте `oc_product_to_category`);
-
-    Если вы получите сообщение об ошибке `Error Code: 1060. Duplicate column name 'main_category'`,
-    ничего страшного: значит, эта колонка уже есть в таблице. Продолжайте установку.
 
 * Внесите изменения в файл `index.php` в корневой папке магазина: найдите строку
 
@@ -47,6 +36,17 @@
     НЕ ИСПОЛЬЗУЙТЕ ДЛЯ РЕДАКТИРОВАНИЯ WINDOWS NOTEPAD!
     Пользуйтесь, например, Notepad++ <http://notepad-plus-plus.org/>.
     Файлы должны быть сохранены в кодировке UTF-8 без BOM маркера.
+
+* Зайдите в phpMyAdmin, выберите базу своего опенкарт-магазина. Выполните запрос:
+
+        ALTER TABLE `oc_product_to_category` ADD `main_category` tinyint(1) NOT NULL DEFAULT '0';
+        ALTER TABLE `oc_product_to_category` ADD INDEX `main_category` (`main_category`);
+
+    Здесь `oc_` - префикс таблиц. **Если вы используете другой префикс**, исправьте его на свой;
+
+    Если вы получите сообщение об ошибке `Error Code: 1060. Duplicate column name 'main_category'`,
+    ничего страшного: значит, эта колонка уже есть в таблице. Продолжайте установку.
+
 
 Мини-FAQ
 
@@ -120,13 +120,13 @@
 в таблицу `url_alias` в базе данных (БД).
 
 Для этого откройте phpMyAdmin или аналогичную программу для работы с БД.
-Выполните следующий запрос.
+Выполните запрос, указанный ниже.
 
-Если у вас используется префикс таблиц, добавьте его перед именем таблицы.
-Например, если префикс "oc_", имя таблицы `url_alias` в запросе надо заменить на
-`oc_url_alias`.
+Если у вас используется свой префикс таблиц, замените "oc_" на свой.
+Если не помните его, то уточнить используемый префикс можно в файле `config.php`
+(в самом конце, константа DB_PREFIX).
 
-    INSERT INTO url_alias (query, keyword) VALUES
+    INSERT INTO oc_url_alias (query, keyword) VALUES
     ('common/home',           ''),
     ('account/wishlist',      'wishlist'),
     ('account/account',       'my-account'),
@@ -163,6 +163,9 @@
     ('affiliate/forgotten',   'affiliate-forgot-password'),
     ('affiliate/register',    'create-affiliate-account'),
     ('affiliate/login',       'affiliate-login');
+
+    INSERT INTO oc_url_alias (query, keyword) VALUES
+    ('blog/home',       'blog');
 
 Это внесёт в базу большинство синонимов для адресов страниц, используемых в Опенкарт.
 Вы можете изменить их на свои или добавить новые, если здесь что-то забыто.

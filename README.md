@@ -48,13 +48,7 @@ or vote for specific issue by adding a cash bounty on [Bountysource.com][bountys
 
 # INSTALLATION
 
-This repository contains all modified files, so you can compare them with yours.
-You can use Total Commander (Windows), WinMerge (Windows), Meld (Linux) to
-compare files and folders. The `upload` folder contains new module files, and
-`dev-modified` folder - all modified core files.
-See manual installation instructions in `HOWTO-install-manual.en.txt` file.
-
-If you prefer automated install, we also provide OCMOD version (ocmod.zip).
+We provide OCMOD version (ocmod.zip).
 See installation instructions in `HOWTO-install-ocmod.en.txt` file.
 
 Ready to use ocmod.zip can be downloaded either from
