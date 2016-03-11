@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+    <code>seopro-theme-pav_mode</code>
+    <name>SeoPro for OC2.x - Pav_mode theme</name>
+    <version>2016-01-21</version>
+    <author>OpencartJazz.com</author>
+    <link>http://www.opencartjazz.com/ocj-seopro-oc2</link>
+
+    <file path="catalog/view/theme/pav_mode/template/common/header.tpl">
+        <operation>
+            <search trim="true" index="0"><![CDATA[<?php foreach ($helper->getCssLinks() as $link) { ?>]]></search>
+            <add position="before" trim="false" offset="0"><![CDATA[<?php foreach ($alter_lang as $lang=>$href) { ?>
+<link href="<?php echo $href; ?>" hreflang="<?php echo $lang; ?>" rel="alternate" />
+<?php } ?>]]></add>
+        </operation>
+    </file>
+
+    <file path="catalog/view/theme/pav_mode/template/common/language.tpl">
+        <operation>
+            <search trim="true" index="0"><![CDATA[<input type="hidden" name="redirect" value="<?php echo $redirect; ?>" />]]></search>
+            <add position="replace" trim="false" offset="0"><![CDATA[  <input type="hidden" name="redirect_route" value="<?php echo $redirect_route; ?>" />
+  <input type="hidden" name="redirect_query" value="<?php echo isset($redirect_query) ? $redirect_query : ''; ?>" />
+  <input type="hidden" name="redirect_ssl" value="<?php echo isset($redirect_ssl) ? $redirect_ssl : ''; ?>" />]]></add>
+        </operation>
+    </file>
+
+</modification>
