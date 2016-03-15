@@ -316,7 +316,6 @@ class ControllerCommonSeoPro extends Controller {
 				case 'news_id':
 				case 'author':
 				case 'ncat':
-				case 'page':
 
 				// Compatibility with unknown Blog:
 				case 'blog_id':
@@ -326,6 +325,14 @@ class ControllerCommonSeoPro extends Controller {
 					$queries[] = $key . '=' . $value;
 					unset($data[$key]);
 					$postfix = 1;
+					break;
+
+				case 'page':
+					if($value == 1) {
+						unset($data[$key]);
+					} else {
+						$queries[] = $key . '=' . $value;
+					}
 					break;
 
 				case 'path':
@@ -357,6 +364,11 @@ class ControllerCommonSeoPro extends Controller {
 		foreach($queries as $query) {
 			if(isset($this->cache_data['queries'][$query])) {
 				$rows[] = array('query' => $query, 'keyword' => $this->cache_data['queries'][$query]);
+			}
+
+			// Leave "page=..." parameter as is
+			if(preg_match('/^page=/', $query) === 1 && $query != 'page=1') {
+				$rows[] = array('query' => $query, 'keyword' => '');
 			}
 		}
 
