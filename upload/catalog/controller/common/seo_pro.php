@@ -164,7 +164,7 @@ class ControllerCommonSeoPro extends Controller {
 
 			} elseif(isset($this->cache_data['queries'][$route_])) {
 					header($this->request->server['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
-					$this->response->redirect($this->cache_data['queries'][$route_]);
+					$this->response->redirect($this->cache_data['queries'][$route_], 301);
 			} else {
 				if (isset($queries[$parts[0]])) {
 					$this->request->get['route'] = $queries[$parts[0]];
