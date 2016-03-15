@@ -32,7 +32,7 @@ class ControllerCommonSeoPro extends Controller {
 
 		$code = null;
 
-		// If language specdified in URI - switch to code from URI
+		// If language specified in URI - switch to code from URI
 		if(isset($this->request->get['_route_'])) {
 			$route_ = $this->request->get['_route_'];
 			$tokens = explode('/', $this->request->get['_route_']);
@@ -126,7 +126,7 @@ class ControllerCommonSeoPro extends Controller {
 
 					// fix "undefined index" exception,
 					// https://github.com/myopencart/ocStore/commit/51bd518ca3ee3330ae87314472f63def17dcf746
-					if(!isset($queries[$part])) return false;
+					if( ! isset($queries[$part])) return false;
 
 					$url = explode('=', $queries[$part], 2);
 
@@ -250,6 +250,7 @@ class ControllerCommonSeoPro extends Controller {
 				}
 				break;
 
+			// pages retreived by AJAX requests
 			case 'product/product/review':
 			case 'information/information/info':
 			case 'information/information/agree':
@@ -422,6 +423,11 @@ class ControllerCommonSeoPro extends Controller {
 				)) {
 			return;
 		}
+		if (ltrim($this->request->server['REQUEST_URI'], '/') == 'sitemap.xml') {
+			$this->request->get['route'] = 'feed/google_sitemap';
+			return;
+		}
+
 		if(empty($this->request->get['route'])) {
 			$this->request->get['route'] = 'common/home';
 		}
@@ -441,6 +447,8 @@ class ControllerCommonSeoPro extends Controller {
 		}
 
 		if (rawurldecode($url) != rawurldecode($seo)) {
+			// header($this->request->server['SERVER_PROTOCOL'] . ' 303 See Other');
+			// $this->response->redirect($seo,303);
 			header($this->request->server['SERVER_PROTOCOL'] . ' 301 Moved Permanently');
 			$this->response->redirect($seo,301);
 		}
