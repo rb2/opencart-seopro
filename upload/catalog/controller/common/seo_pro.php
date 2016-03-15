@@ -125,7 +125,7 @@ class ControllerCommonSeoPro extends Controller {
 
 					// fix "undefined index" exception,
 					// https://github.com/myopencart/ocStore/commit/51bd518ca3ee3330ae87314472f63def17dcf746
-					if(!isset($queries[$part])) return false;
+					if( ! isset($queries[$part])) return false;
 
 					$url = explode('=', $queries[$part], 2);
 
@@ -233,6 +233,7 @@ class ControllerCommonSeoPro extends Controller {
 				return $link;
 				// (if you want to pass all parameters on homepage as is, comment the line above: `// return $link;`)
 				break;
+
 			case 'product/product':
 				if (isset($data['product_id'])) {
 					// Whitelist GET parameters
