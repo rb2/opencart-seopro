@@ -325,6 +325,14 @@ class ControllerCommonSeoPro extends Controller {
 					$postfix = 1;
 					break;
 
+				case 'page':
+					if($value == 1) {
+						unset($data[$key]);
+					} else {
+						$queries[] = $key . '=' . $value;
+					}
+					break;
+
 				case 'path':
 					// ATTN: user can set any path: path=2_4_1_2_3
 					$category_path = explode('_', $value);
@@ -354,6 +362,11 @@ class ControllerCommonSeoPro extends Controller {
 		foreach($queries as $query) {
 			if(isset($this->cache_data['queries'][$query])) {
 				$rows[] = array('query' => $query, 'keyword' => $this->cache_data['queries'][$query]);
+			}
+
+			// Leave "page=..." parameter as is
+			if(preg_match('/^page=/', $query) === 1 && $query != 'page=1') {
+				$rows[] = array('query' => $query, 'keyword' => '');
 			}
 		}
 
