@@ -157,6 +157,19 @@ class ControllerCommonSeoPro extends Controller {
 			} elseif (isset($this->request->get['information_id'])) {
 				$this->request->get['route'] = 'information/information';
 
+			// Compatibility with Shopencart News/Blog:
+			} elseif (isset($this->request->get['news_id'])) {
+				$this->request->get['route'] = 'news/article';
+			} elseif (isset($this->request->get['author'])) {
+				$this->request->get['route'] = 'news/ncategory';
+			} elseif (isset($this->request->get['ncat'])) {
+				$this->request->get['route'] = 'news/ncategory';
+			} elseif (isset($this->request->get['ncategory_id'])) {
+				$this->request->get['route'] = 'news/ncategory';
+			} elseif (isset($this->request->get['author'])) {
+				$this->request->get['route'] = 'news/ncategory';
+
+			// VDF (villagedefrance) News module compatibility
 			} elseif (isset($this->request->get['news_id'])) {
 				$this->request->get['route'] = 'information/news/news';
 			} elseif (isset($this->request->get['posts_id'])) {
@@ -292,11 +305,18 @@ class ControllerCommonSeoPro extends Controller {
 				case 'manufacturer_id':
 				case 'category_id':
 				case 'information_id':
+				case 'order_id':
 
 				case 'search':
 				case 'sub_category':
 				case 'description':
 
+				// Compatibility with Shopencart News/Blog:
+				case 'news_id':
+				case 'author':
+				case 'ncat':
+
+				// Compatibility with VDF News
 				case 'news_id':
 				case 'posts_id':
 
