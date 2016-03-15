@@ -168,6 +168,12 @@ class ControllerCommonSeoPro extends Controller {
 			} elseif (isset($this->request->get['author'])) {
 				$this->request->get['route'] = 'news/ncategory';
 
+			// Compatibility with VDF News (villagedefrance)
+			} elseif (isset($this->request->get['news_id'])) {
+				$this->request->get['route'] = 'information/news/news';
+			} elseif (isset($this->request->get['posts_id'])) {
+				$this->request->get['route'] = 'information/posts/posts';
+
 			// Compatibility with some unknown Blog (blog/home, blog/category, blog/blog):
 			} elseif (isset($this->request->get['blog_id'])) {
 				$this->request->get['route'] = 'blog/blog';
@@ -316,6 +322,10 @@ class ControllerCommonSeoPro extends Controller {
 				case 'news_id':
 				case 'author':
 				case 'ncat':
+
+				// Compatibility with VDF News (villagedefrance)
+				case 'news_id':
+				case 'posts_id':
 
 				// Compatibility with unknown Blog:
 				case 'blog_id':
