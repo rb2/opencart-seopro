@@ -4,7 +4,7 @@
     <name>SeoPro for Opencart v2.x</name>
     <version>1.0.2016-01-15</version>
     <author>OpencartJazz.com</author>
-    <link>http://www.opencartjazz.com/opencart-module/seo/ocj-seopro-oc2</link>
+    <link>http://www.opencartjazz.com/ocj-seopro-oc2</link>
     <file path="admin/controller/catalog/product.php">
         <operation>
             <search trim="true" index="0"><![CDATA[
