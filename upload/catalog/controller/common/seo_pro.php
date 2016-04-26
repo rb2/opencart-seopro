@@ -286,6 +286,7 @@ class ControllerCommonSeoPro extends Controller {
 			case 'product/product/review':
 			case 'information/information/info':
 			case 'information/information/agree':
+			case 'product/live_options/js':
 				return $link;
 				break;
 
@@ -475,9 +476,13 @@ class ControllerCommonSeoPro extends Controller {
 	}
 
 	private function validate() {
-		if (isset($this->request->get['route']) && ($this->request->get['route'] == 'error/not_found'
-			|| preg_match('~^api/~',$this->request->get['route']) // Masks all api requests
-				)) {
+		// Leave some routes AS IS, pass through seo_pro.php
+		$asis = array('error/not_found', 'product/live_options/js');
+		if (isset($this->request->get['route']) && (
+			in_array($this->request->get['route'], $asis)
+			|| preg_match('~^api/~', $this->request->get['route'])    // All API requests
+			))
+		{
 			return;
 		}
 		if (ltrim($this->request->server['REQUEST_URI'], '/') == 'sitemap.xml') {
