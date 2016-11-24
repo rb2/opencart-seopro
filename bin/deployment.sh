@@ -1,5 +1,5 @@
 #!/bin/bash
-MODULE=ocjazz-seopro-v203x-21xx
+MODULE=ocjazz-seopro-v203x-21xx-ocshop
 
 cd ..
 git log --pretty=format:"%cd %s" --date=short --no-merges | grep -v '\[~\]'  > ./history.txt
