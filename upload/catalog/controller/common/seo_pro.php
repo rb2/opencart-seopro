@@ -438,7 +438,13 @@ class ControllerCommonSeoPro extends Controller {
 
 			// Leave "page=..." parameter as is
 			if(preg_match('/^page=/', $query) === 1 && $query != 'page=1') {
-				$rows[] = array('query' => $query, 'keyword' => '');
+				// Fix for site.com/?page=
+				if (isset($this->cache_data['queries'][$route])) {
+					$route_for_page = $this->cache_data['queries'][$route];
+					$rows[] = array('query' => $query, 'keyword' => $route_for_page);
+				} else {
+					$rows[] = array('query' => $query, 'keyword' => '');
+				}
 			}
 		}
 
