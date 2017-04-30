@@ -22,9 +22,6 @@ $_['text_mail']                    = 'Mail';
 $_['text_smtp']                    = 'SMTP';
 $_['text_seo_url']                 = 'Default';
 $_['text_seo_pro']                 = 'SeoPro';
-$_['entry_seo_url_type']           = 'Тип ЧПУ:';
-$_['entry_seo_url_include_path']   = 'ЧПУ товаров с категориями:<span class="help">/category/subcategory/product<br />(только для SeoPro)</span>';
-$_['entry_seo_url_postfix']        = 'Окончание ЧПУ:<span class="help">Например .html<br />(только для SeoPro)</span>';
 
 // Entry
 $_['entry_name']                   = 'Store Name:';
