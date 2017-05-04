@@ -287,6 +287,10 @@ class ControllerCommonSeoPro extends Controller {
 			case 'information/information/info':
 			case 'information/information/agree':
 			case 'product/live_options/js':
+			case 'module/kw_flycart/addProduct':
+			case 'module/kw_flycart/removeProduct':
+			case 'module/kw_flycart/quantityUpdate':
+			case 'module/kw_flycart/loader':
 				return $link;
 				break;
 
