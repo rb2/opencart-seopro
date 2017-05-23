@@ -284,6 +284,7 @@ class ControllerCommonSeoPro extends Controller {
 
 			// pages retreived by AJAX requests
 			case 'product/product/review':
+			case 'tool/captcha':
 			case 'information/information/info':
 			case 'information/information/agree':
 			case 'product/live_options/js':
